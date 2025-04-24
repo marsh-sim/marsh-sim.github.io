@@ -87,6 +87,11 @@
                   <li class="toctree-l1"><a class="reference internal" href="../nodes/development/">Development</a>
                   </li>
               </ul>
+              <p class="caption"><span class="caption-text">Data analysis</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../analysis/matlab/">MATLAB</a>
+                  </li>
+              </ul>
               <p class="caption"><span class="caption-text">MAVLink definitions</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../mavlink/minimal/">Minimal Set</a>
@@ -182,9 +187,12 @@ The maximum length for file comment is 50 characters.</p>
 </div>
 <p>The data files saved are "MAVLink telemetry log", recognizable by <code>.tlog</code> extension.
 This binary file format is a de facto standard between multiple UAV flight stacks, the file just contains MAVLink messages, each preceded by a timestamp in microseconds.</p>
-<p>There are multiple external tools available for viewing the logs, notable examples:</p>
+<p>We have documentation for analysis in:</p>
 <ul>
-<li><a href="https://it.mathworks.com/help/uav/mavlink-support.html?s_tid=CRUX_lftnav">MAVLink Support</a> in MATLAB's UAV Toolbox includes <a href="https://it.mathworks.com/help/uav/ref/mavlinktlog.html"><code>mavlinktlog</code> function</a></li>
+<li><a href="../analysis/matlab/">MATLAB</a>.</li>
+</ul>
+<p>There are also multiple external tools available for viewing the logs, notable examples:</p>
+<ul>
 <li><a href="https://github.com/ArduPilot/pymavlink">pymavlink library</a> which is used for generating libraries and communication for Python also has <a href="https://github.com/ArduPilot/pymavlink/blob/master/tools/mavlogdump.py"><code>mavlogdump.py</code> script</a></li>
 <li>Some online tools like <a href="https://plot.ardupilot.org/">UAV Log Viewer</a> can read <code>.tlog</code> files.</li>
 <li>ArduPilot's <a href="https://ardupilot.org/dev/docs/using-mavexplorer-for-log-analysis.html">MAVExplorer</a> can be used for plots, filtering data and showing it on a map</li>
