@@ -80,9 +80,12 @@ The maximum length for file comment is 50 characters.
 The data files saved are "MAVLink telemetry log", recognizable by `.tlog` extension.
 This binary file format is a de facto standard between multiple UAV flight stacks, the file just contains MAVLink messages, each preceded by a timestamp in microseconds.
 
-There are multiple external tools available for viewing the logs, notable examples:
+We have documentation for analysis in:
 
-- [MAVLink Support](https://it.mathworks.com/help/uav/mavlink-support.html?s_tid=CRUX_lftnav) in MATLAB's UAV Toolbox includes [`mavlinktlog` function](https://it.mathworks.com/help/uav/ref/mavlinktlog.html)
+- [MATLAB](../analysis/matlab.md).
+
+There are also multiple external tools available for viewing the logs, notable examples:
+
 - [pymavlink library](https://github.com/ArduPilot/pymavlink) which is used for generating libraries and communication for Python also has [`mavlogdump.py` script](https://github.com/ArduPilot/pymavlink/blob/master/tools/mavlogdump.py)
 - Some online tools like [UAV Log Viewer](https://plot.ardupilot.org/) can read `.tlog` files.
 - ArduPilot's [MAVExplorer](https://ardupilot.org/dev/docs/using-mavexplorer-for-log-analysis.html) can be used for plots, filtering data and showing it on a map
