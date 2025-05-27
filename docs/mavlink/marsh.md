@@ -7,6 +7,10 @@ All other projects need to generate and appropriate libraries, following the [ma
 
 When in need of a definition for a given functionality which is not covered here, first consult the Common Message Set, both [our subset](./common.md) and [full list](https://mavlink.io/en/messages/common.html). If a new definition is actually needed, follow the original guide on [how to define MAVLink Messages & Enums](https://mavlink.io/en/guide/define_xml_element.html)
 
+!!! note
+    The ids of all messages have been changed in [commit 3621719](https://github.com/marsh-sim/mavlink/commit/36217197c05040c41e6a427cb4908ca40106d83e) on 2025-05-16 for inclusion in the upstream MAVLink repository.
+    Custom messages saved in `.tlog` files before that change will not be recognised by newer code.
+
 <!-- markdownlint-disable -->
 <!-- AUTO-GENERATED PART BELOW, DO NOT MODIFY BY HAND -->
 

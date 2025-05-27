@@ -99,7 +99,6 @@ The following are already planned future features of MARSH Manager, approximatel
     - Automated builds and releases on GitHub
     - Windows package (with `windeployqt`)
 - Connecting nodes on serial port
-- Button to remove timed out nodes from network view
 - Graph visualisation, considering these candidate solutions:
     - [NASA OpenMCT](https://github.com/nasa/openmct) or [Grafana](https://github.com/grafana/grafana)
         - Expect updates over WebSocket, see [mavlink2rest](https://github.com/mavlink/mavlink2rest)
@@ -116,7 +115,7 @@ The following are already planned future features of MARSH Manager, approximatel
     - Parameter descriptions with [Component Metadata Protocol](https://mavlink.io/en/services/component_information.html)
 - Console showing [STATUSTEXT](../mavlink/common.md#STATUSTEXT) messages
 - Replaying log files
-- Allow unregistered clients to do *some* operations that would make sense for simple utility scripts, for example parameters
+- Resolving duplicate component ids
 
 ## Contributing
 
