@@ -125,7 +125,7 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
 <!-- AUTO-GENERATED PART BELOW, DO NOT MODIFY BY HAND -->
 
 <h2 id="definition-list">Definition list</h2>
-<p>Generated on 2025-05-27T12:11:55 from commit <a href="https://github.com/marsh-sim/mavlink/tree/7d3a04174105c00eb712b6a6ab16452a372e4a93">7d3a041</a></p>
+<p>Generated on 2025-05-27T12:37:44 from commit <a href="https://github.com/marsh-sim/mavlink/tree/7740cef8823980e5561bf78a1366841e3641684a">7740cef</a></p>
 <ul>
  <li><a href="#enums">Enums</a><ul>
   <li><a href="#MARSH_TYPE">MARSH_TYPE</a></li>
@@ -249,7 +249,7 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
      <td>
       <a href="#MARSH_TYPE_EXPERIMENT_DIRECTOR">MARSH_TYPE_EXPERIMENT_DIRECTOR</a>
      </td>
-     <td>Principal component controlling the main scenario of a given test, (unlike lower level <a href="#PILOT_TARGET">PILOT_TARGET</a> or communication-only MANAGER).</td>
+     <td>Principal component controlling the main scenario of a given test, (unlike lower level <a href="#MARSH_TYPE_PILOT_TARGET">MARSH_TYPE_PILOT_TARGET</a> or <a href="#MARSH_TYPE_MANAGER">MARSH_TYPE_MANAGER</a> for overall communication).</td>
     </tr>
    </tbody>
   </table>
@@ -490,7 +490,7 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Send data about a control axis from a control loading system. This is the primary message for logging data from <a href="#MARSH_COMP_ID_CONTROL_LOADING">MARSH_COMP_ID_CONTROL_LOADING</a>.</p>
+   </strong>Send data about a control axis from a control loading system. This is the primary message for logging data from <a href="#MARSH_TYPE_CONTROL_LOADING">MARSH_TYPE_CONTROL_LOADING</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -560,7 +560,7 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
    </a>
    <strong>
     (MAVLink 2)
-   </strong>State report for motion platform used for moving the cockpit with the pilot for motion cueing. This is the primary message for MARSH_COMP_ID_MOTION_PLATFORM</p>
+   </strong>State report for motion platform used for moving the cockpit with the pilot for motion cueing. This is the primary message for <a href="#MARSH_TYPE_MOTION_PLATFORM">MARSH_TYPE_MOTION_PLATFORM</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -989,7 +989,7 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for tracking of pilot eye gaze.</p>
+   </strong>Data for tracking of pilot eye gaze. This is the primary message for <a href="#MARSH_TYPE_EYE_TRACKER">MARSH_TYPE_EYE_TRACKER</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
