@@ -135,15 +135,18 @@ The receivers can detect if the quaternion contains valid data by comparing the 
 <!-- AUTO-GENERATED PART BELOW, DO NOT MODIFY BY HAND -->
 
 <h2 id="definition-list">Definition list</h2>
-<p>Generated on 2025-05-27T12:37:43 from commit <a href="https://github.com/marsh-sim/mavlink/tree/7740cef8823980e5561bf78a1366841e3641684a">7740cef</a></p>
+<p>Generated on 2025-05-27T13:34:49 from commit <a href="https://github.com/marsh-sim/mavlink/tree/7740cef8823980e5561bf78a1366841e3641684a">7740cef</a></p>
 <ul>
  <li><a href="#enums">Enums</a><ul>
   <li><a href="#MAV_FRAME">MAV_FRAME</a></li>
   <li><a href="#MAV_PARAM_TYPE">MAV_PARAM_TYPE</a></li>
+  <li><a href="#MAV_RESULT">MAV_RESULT</a></li>
   <li><a href="#MAV_SEVERITY">MAV_SEVERITY</a></li>
   <li><a href="#POSITION_TARGET_TYPEMASK">POSITION_TARGET_TYPEMASK</a></li>
  </ul></li>
  <li><a href="#mav_commands">Mav Commands</a><ul>
+  <li><a href="#MAV_CMD_SET_MESSAGE_INTERVAL">MAV_CMD_SET_MESSAGE_INTERVAL</a></li>
+  <li><a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a></li>
  </ul></li>
  <li><a href="#messages">Messages</a><ul>
   <li><a href="#PARAM_REQUEST_READ">PARAM_REQUEST_READ</a></li>
@@ -153,6 +156,8 @@ The receivers can detect if the quaternion contains valid data by comparing the 
   <li><a href="#ATTITUDE">ATTITUDE</a></li>
   <li><a href="#LOCAL_POSITION_NED">LOCAL_POSITION_NED</a></li>
   <li><a href="#MANUAL_CONTROL">MANUAL_CONTROL</a></li>
+  <li><a href="#COMMAND_LONG">COMMAND_LONG</a></li>
+  <li><a href="#COMMAND_ACK">COMMAND_ACK</a></li>
   <li><a href="#MANUAL_SETPOINT">MANUAL_SETPOINT</a></li>
   <li><a href="#SET_POSITION_TARGET_LOCAL_NED">SET_POSITION_TARGET_LOCAL_NED</a></li>
   <li><a href="#POSITION_TARGET_LOCAL_NED">POSITION_TARGET_LOCAL_NED</a></li>
@@ -475,6 +480,92 @@ The receivers can detect if the quaternion contains valid data by comparing the 
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_RESULT">MAV_RESULT</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Result from a MAVLink command (<a href="#mav_commands">MAV_CMD</a>)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_RESULT_ACCEPTED">
+     <td>0</td>
+     <td>
+      <a href="#MAV_RESULT_ACCEPTED">MAV_RESULT_ACCEPTED</a>
+     </td>
+     <td>Command is valid (is supported and has valid parameters), and was executed.</td>
+    </tr>
+    <tr id="MAV_RESULT_TEMPORARILY_REJECTED">
+     <td>1</td>
+     <td>
+      <a href="#MAV_RESULT_TEMPORARILY_REJECTED">MAV_RESULT_TEMPORARILY_REJECTED</a>
+     </td>
+     <td>Command is valid, but cannot be executed at this time. This is used to indicate a problem that should be fixed just by waiting (e.g. a state machine is busy, can't arm because have not got GPS lock, etc.). Retrying later should work.</td>
+    </tr>
+    <tr id="MAV_RESULT_DENIED">
+     <td>2</td>
+     <td>
+      <a href="#MAV_RESULT_DENIED">MAV_RESULT_DENIED</a>
+     </td>
+     <td>Command is invalid (is supported but has invalid parameters). Retrying same command and parameters will not work.</td>
+    </tr>
+    <tr id="MAV_RESULT_UNSUPPORTED">
+     <td>3</td>
+     <td>
+      <a href="#MAV_RESULT_UNSUPPORTED">MAV_RESULT_UNSUPPORTED</a>
+     </td>
+     <td>Command is not supported (unknown).</td>
+    </tr>
+    <tr id="MAV_RESULT_FAILED">
+     <td>4</td>
+     <td>
+      <a href="#MAV_RESULT_FAILED">MAV_RESULT_FAILED</a>
+     </td>
+     <td>Command is valid, but execution has failed. This is used to indicate any non-temporary or unexpected problem, i.e. any problem that must be fixed before the command can succeed/be retried. For example, attempting to write a file when out of memory, attempting to arm when sensors are not calibrated, etc.</td>
+    </tr>
+    <tr id="MAV_RESULT_IN_PROGRESS">
+     <td>5</td>
+     <td>
+      <a href="#MAV_RESULT_IN_PROGRESS">MAV_RESULT_IN_PROGRESS</a>
+     </td>
+     <td>Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further <a href="#COMMAND_ACK">COMMAND_ACK</a> messages with result <a href="#MAV_RESULT_IN_PROGRESS">MAV_RESULT_IN_PROGRESS</a> (at a rate decided by the implementation), and must terminate by sending a <a href="#COMMAND_ACK">COMMAND_ACK</a> message with final result of the operation. The <a href="#COMMAND_ACK">COMMAND_ACK</a>.progress field can be used to indicate the progress of the operation.</td>
+    </tr>
+    <tr id="MAV_RESULT_CANCELLED">
+     <td>6</td>
+     <td>
+      <a href="#MAV_RESULT_CANCELLED">MAV_RESULT_CANCELLED</a>
+     </td>
+     <td>Command has been cancelled (as a result of receiving a <a href="#COMMAND_CANCEL">COMMAND_CANCEL</a> message).</td>
+    </tr>
+    <tr id="MAV_RESULT_COMMAND_LONG_ONLY">
+     <td>7</td>
+     <td>
+      <a href="#MAV_RESULT_COMMAND_LONG_ONLY">MAV_RESULT_COMMAND_LONG_ONLY</a>
+     </td>
+     <td>Command is only accepted when sent as a <a href="#COMMAND_LONG">COMMAND_LONG</a>.</td>
+    </tr>
+    <tr id="MAV_RESULT_COMMAND_INT_ONLY">
+     <td>8</td>
+     <td>
+      <a href="#MAV_RESULT_COMMAND_INT_ONLY">MAV_RESULT_COMMAND_INT_ONLY</a>
+     </td>
+     <td>Command is only accepted when sent as a <a href="#COMMAND_INT">COMMAND_INT</a>.</td>
+    </tr>
+    <tr id="MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME">
+     <td>9</td>
+     <td>
+      <a href="#MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME">MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME</a>
+     </td>
+     <td>Command is invalid because a frame is required and the specified frame is not supported.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_SEVERITY">MAV_SEVERITY</h3>
   <p>
    <a href="#enums">
@@ -656,6 +747,142 @@ The receivers can detect if the quaternion contains valid data by comparing the 
    <p>MAVLink commands (<a href="#mav_commands">MAV_CMD</a>) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
   </blockquote>
   <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. NaN and INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current yaw or latitude rather than a specific value). See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the <a href="#mav_commands">MAV_CMD</a> entries</p>
+  <h3 id="MAV_CMD_SET_MESSAGE_INTERVAL">MAV_CMD_SET_MESSAGE_INTERVAL (<a href="#MAV_CMD_SET_MESSAGE_INTERVAL">511</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Set the interval between messages for a particular MAVLink message ID. This interface replaces <a href="#REQUEST_DATA_STREAM">REQUEST_DATA_STREAM</a>.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Message ID</td>
+     <td>The MAVLink message ID</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>2: Interval</td>
+     <td>The interval between two messages. -1: disable. 0: request default rate (which may be zero).</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>increment:</em>1</td>
+     <td>us</td>
+    </tr>
+    <tr>
+     <td>3: Req Param 3</td>
+     <td>Use for index ID, if required. Otherwise, the use of this parameter (if any) must be defined in the requested message. By default assumed not used (0).  When used as an index ID, 0 means "all instances", "1" means the first instance in the sequence (the emitted message will have an id of 0 if message ids are 0-indexed, or 1 if index numbers start from one).</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4: Req Param 4</td>
+     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5: Req Param 5</td>
+     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0/NaN).</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6: Req Param 6</td>
+     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0/NaN).</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7: Response Target</td>
+     <td>Target address of message stream (if message has target address fields). 0: Flight-stack default (recommended), 1: address of requestor, 2: broadcast.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE (<a href="#MAV_CMD_REQUEST_MESSAGE">512</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request the target system(s) emit a single instance of a specified message (i.e. a "one-shot" version of <a href="#MAV_CMD_SET_MESSAGE_INTERVAL">MAV_CMD_SET_MESSAGE_INTERVAL</a>).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Message ID</td>
+     <td>The MAVLink message ID of the requested message.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>2: Req Param 1</td>
+     <td>Use for index ID, if required. Otherwise, the use of this parameter (if any) must be defined in the requested message. By default assumed not used (0).</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3: Req Param 2</td>
+     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4: Req Param 3</td>
+     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5: Req Param 4</td>
+     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6: Req Param 5</td>
+     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7: Response Target</td>
+     <td>Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requestor, 2: broadcast.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+    </tr>
+   </tbody>
+  </table>
   <h2 id="messages">MAVLink Messages</h2>
   <h3 id="PARAM_REQUEST_READ">PARAM_REQUEST_READ (<a href="#PARAM_REQUEST_READ">
     #20
@@ -1095,6 +1322,196 @@ The receivers can detect if the quaternion contains valid data by comparing the 
      </td>
      <td>int16_t</td>
      <td>Aux continuous input field 6. Normalized in the range [-1000,1000]. Purpose defined by recipient. Valid data if bit 7 of enabled_extensions field is set. 0 if bit 7 is unset.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="COMMAND_LONG">COMMAND_LONG (<a href="#COMMAND_LONG">
+    #76
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Send a command with up to seven parameters to the MAV. <a href="#COMMAND_INT">COMMAND_INT</a> is generally preferred when sending <a href="#mav_commands">MAV_CMD</a> commands that include positional information; it offers higher precision and allows the <a href="#MAV_FRAME">MAV_FRAME</a> to be specified (which may otherwise be ambiguous, particularly for altitude). The command microservice is documented at https://mavlink.io/en/services/command.html</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>System which should execute the command</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Component which should execute the command, 0 for all components</td>
+    </tr>
+    <tr>
+     <td>command</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#MAV_CMD">MAV_CMD</a>
+     </td>
+     <td>Command ID (of command to send).</td>
+    </tr>
+    <tr>
+     <td>confirmation</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>0: First transmission of this command. 1-255: Confirmation transmissions (e.g. for kill command)</td>
+    </tr>
+    <tr>
+     <td>param1</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Parameter 1 (for the specific command).</td>
+    </tr>
+    <tr>
+     <td>param2</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Parameter 2 (for the specific command).</td>
+    </tr>
+    <tr>
+     <td>param3</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Parameter 3 (for the specific command).</td>
+    </tr>
+    <tr>
+     <td>param4</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Parameter 4 (for the specific command).</td>
+    </tr>
+    <tr>
+     <td>param5</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Parameter 5 (for the specific command).</td>
+    </tr>
+    <tr>
+     <td>param6</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Parameter 6 (for the specific command).</td>
+    </tr>
+    <tr>
+     <td>param7</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Parameter 7 (for the specific command).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="COMMAND_ACK">COMMAND_ACK (<a href="#COMMAND_ACK">
+    #77
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Report status of a command. Includes feedback whether the command was executed. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>command</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_CMD">MAV_CMD</a>
+     </td>
+     <td>Command ID (of acknowledged command).</td>
+    </tr>
+    <tr>
+     <td>result</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_RESULT">MAV_RESULT</a>
+     </td>
+     <td>Result of command.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">progress<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+      %
+     </td>
+     <td>
+     </td>
+     <td>The progress percentage when result is <a href="#MAV_RESULT_IN_PROGRESS">MAV_RESULT_IN_PROGRESS</a>. Values: [0-100], or UINT8_MAX if the progress is unknown.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">result_param2<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>int32_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Additional result information. Can be set with a command-specific enum containing command-specific error reasons for why the command might be denied. If used, the associated enum must be documented in the corresponding <a href="#mav_commands">MAV_CMD</a> (this enum should have a 0 value to indicate "unused" or "unknown").</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">target_system<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>System ID of the target recipient. This is the ID of the system that sent the command for which this <a href="#COMMAND_ACK">COMMAND_ACK</a> is an acknowledgement.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">target_component<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Component ID of the target recipient. This is the ID of the system that sent the command for which this <a href="#COMMAND_ACK">COMMAND_ACK</a> is an acknowledgement.</td>
     </tr>
    </tbody>
   </table>
