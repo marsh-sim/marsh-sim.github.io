@@ -1,18 +1,21 @@
 # Node development
 
-Every component of the simulator should be a separate node. The nodes have to publish a [HEARTBEAT](https://mavlink.io/en/messages/common.html#HEARTBEAT) message according to [Heartbeat/Connection Protocol](https://mavlink.io/en/services/heartbeat.html).
-There are additional simulator-specific values defined for `type` field, in the [MARSH_TYPE](../mavlink/marsh.md#MARSH_TYPE) enum.
+Every component of the simulator should be a separate node. The nodes have to publish a [HEARTBEAT](../mavlink/minimal.md#HEARTBEAT) message according to [Heartbeat/Connection Protocol](https://mavlink.io/en/services/heartbeat.html).
+There are additional simulator-specific values defined for `type` field, in the [MARSH_TYPE](../mavlink/marsh.md#MARSH_TYPE) enum, which occupy a currently unused region of the standard [MAV_TYPE](../mavlink/minimal.md#MAV_TYPE) (and one day might clash).
 
-!!! warning
-    Historically the component id was also used to determine the component type. New code must not make any assumption about the type from the id used (type is determined from `HEARTBEAT.type`). - quoted from [MAVLink documentaton](https://mavlink.io/en/services/heartbeat.html#component-identity)
-
+Component ids can be allocated *any* value other than zero.
+Historically the component id was also used to determine the component type, for example `MAV_COMP_ID_CAMERA6`.
 With that in mind, the *default* component id is still determined from the type to reduce the risk of collisions, according to this formula:
 
 ```
 component_id = MAV_COMP_ID_USER1 + (marsh_type - MARSH_TYPE_MANAGER)
 ```
 
-This assigns consecutive `USER#` definitions, and is used throughout the authors' code.
+This assigns consecutive definitions starting with [MAV_COMP_ID_USER1](../mavlink/minimal.md#MAV_COMP_ID_USER1), and is used throughout the authors' code.
+
+!!! warning
+    Even though we have used the types to define our component IDs, your code must not make any assumption about the type from the id used (type is determined from `HEARTBEAT.type`, as stated in the [MAVLink documentaton](https://mavlink.io/en/services/heartbeat.html#component-identity)
+
 If someone were to make a mistake and use `MARSH_TYPE` directly as component id, they would show up as `CAMERA` to `CAMERA6`
 
 ## Example repository
