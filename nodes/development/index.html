@@ -115,7 +115,8 @@
               
                 <h1 id="node-development">Node development</h1>
 <p>Every component of the simulator should be a separate node. The nodes have to publish a <a href="../../mavlink/minimal/#HEARTBEAT">HEARTBEAT</a> message according to <a href="https://mavlink.io/en/services/heartbeat.html">Heartbeat/Connection Protocol</a>.
-There are additional simulator-specific values defined for <code>type</code> field, in the <a href="../../mavlink/marsh/#MARSH_TYPE">MARSH_TYPE</a> enum, which occupy a currently unused region of the standard <a href="../../mavlink/minimal/#MAV_TYPE">MAV_TYPE</a> (and one day might clash).</p>
+There are additional simulator-specific values defined for <code>type</code> field, in the <a href="../../mavlink/marsh/#MARSH_TYPE">MARSH_TYPE</a> enum, which occupy a currently unused region of the standard <a href="../../mavlink/minimal/#MAV_TYPE">MAV_TYPE</a> (and one day might clash).
+Correctly assigning types for each node makes it easier to identify them in the manager, and troubleshoot problems in simulation.</p>
 <p>Component ids can be allocated <em>any</em> value other than zero.
 Historically the component id was also used to determine the component type, for example <code>MAV_COMP_ID_CAMERA6</code>.
 With that in mind, the <em>default</em> component id is still determined from the type to reduce the risk of collisions, according to this formula:</p>
