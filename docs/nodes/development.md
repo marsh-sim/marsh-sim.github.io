@@ -2,6 +2,7 @@
 
 Every component of the simulator should be a separate node. The nodes have to publish a [HEARTBEAT](../mavlink/minimal.md#HEARTBEAT) message according to [Heartbeat/Connection Protocol](https://mavlink.io/en/services/heartbeat.html).
 There are additional simulator-specific values defined for `type` field, in the [MARSH_TYPE](../mavlink/marsh.md#MARSH_TYPE) enum, which occupy a currently unused region of the standard [MAV_TYPE](../mavlink/minimal.md#MAV_TYPE) (and one day might clash).
+Correctly assigning types for each node makes it easier to identify them in the manager, and troubleshoot problems in simulation.
 
 Component ids can be allocated *any* value other than zero.
 Historically the component id was also used to determine the component type, for example `MAV_COMP_ID_CAMERA6`.

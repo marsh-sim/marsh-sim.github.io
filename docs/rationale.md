@@ -45,6 +45,8 @@ The requirements expressed as [user stories](https://en.wikipedia.org/wiki/User_
 
 - **As a** simulator developer **I can** reuse common elements in different configurations, **so that** there is less work repeated to prepare the simulator for a new study.
 - **As a** user adding a new device or flight model **I can** read a well-written and detailed documentation, **so that** the development process is feasible.
+- **As a** simulator developer **I can** divide functionality into smaller components, **so that** parts of the program are easier to reason about.
+- **As a** simulator user **I can** inspect information flowing inside the simulator, **so that** it is easy to troubleshoot the right part of the system.
 
 ## Standard selection
 
