@@ -16,7 +16,7 @@ dialect_common = mavlinkdialect("common.xml");
 logimport_common= mavlinktlog("./data/YYMMDDTHHMMSS_comment.tlog", dialect_common);
 
 sim_state_msgs = readmsg(logimport_common, 'MessageName', 'SIM_STATE');
-sim_state_data = sim_msgs.Messages{1};
+sim_state_data = sim_state_msgs.Messages{1};
 
 % This requires a local copy, which would typically be created by update_mavlink.py
 dialect_marsh = mavlinkdialect("./mavlink_repo/message_definitions/v1.0/marsh.xml");
