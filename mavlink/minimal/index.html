@@ -119,7 +119,7 @@
 <!-- AUTO-GENERATED PART BELOW, DO NOT MODIFY BY HAND -->
 
 <h2 id="definition-list">Definition list</h2>
-<p>Generated on 2025-07-23T14:59:49 from commit <a href="https://github.com/marsh-sim/mavlink/tree/dd6420bd684b0085f33c3fefd3d730a1c3c1b84a">dd6420b</a></p>
+<p>Generated on 2025-10-24T07:31:46 from commit <a href="https://github.com/marsh-sim/mavlink/tree/83a84b47fe0c409229aef358d211a98f81ec788e">83a84b4</a></p>
 <ul>
  <li><a href="#enums">Enums</a><ul>
   <li><a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a></li>
@@ -631,7 +631,7 @@
      <td>
       <a href="#MAV_TYPE_ILLUMINATOR">MAV_TYPE_ILLUMINATOR</a>
      </td>
-     <td>Illuminator. An illuminator is a light source that is used for lighting up dark areas external to the sytstem: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light).</td>
+     <td>Illuminator. An illuminator is a light source that is used for lighting up dark areas external to the system: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light).</td>
     </tr>
     <tr id="MAV_TYPE_SPACECRAFT_ORBITER">
      <td>45</td>
@@ -654,13 +654,27 @@
      </td>
      <td>VTOL hybrid of helicopter and autogyro. It has a main rotor for lift and separate propellers for forward flight. The rotor must be powered for hover but can autorotate in cruise flight. See: https://en.wikipedia.org/wiki/Gyrodyne</td>
     </tr>
+    <tr id="MAV_TYPE_GRIPPER">
+     <td>48</td>
+     <td>
+      <a href="#MAV_TYPE_GRIPPER">MAV_TYPE_GRIPPER</a>
+     </td>
+     <td>Gripper</td>
+    </tr>
+    <tr id="MAV_TYPE_RADIO">
+     <td>49</td>
+     <td>
+      <a href="#MAV_TYPE_RADIO">MAV_TYPE_RADIO</a>
+     </td>
+     <td>Radio</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_MODE_FLAG">MAV_MODE_FLAG</h3>
   <p>
    <a href="#enums">
     [Enum]
-   </a>These flags encode the MAV mode.</p>
+   </a>These flags encode the MAV mode, see <a href="#MAV_MODE">MAV_MODE</a> enum for useful combinations.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -724,7 +738,7 @@
      <td>
       <a href="#MAV_MODE_FLAG_CUSTOM_MODE_ENABLED">MAV_MODE_FLAG_CUSTOM_MODE_ENABLED</a>
      </td>
-     <td>0b00000001 Reserved for future use.</td>
+     <td>0b00000001 system-specific custom mode is enabled. When using this flag to enable a custom mode all other flags should be ignored.</td>
     </tr>
    </tbody>
   </table>
@@ -884,9 +898,17 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.).
-      Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The <a href="#MAV_COMP_ID_ALL">MAV_COMP_ID_ALL</a> value is used to indicate messages that must be processed by all components.
-      When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded.</p>
+   </a>Legacy component ID values for particular types of hardware/software that might make up a MAVLink system (autopilot, cameras, servos, avoidance systems etc.).
+
+        Components are not required or expected to use IDs with names that correspond to their type or function, but may choose to do so.
+        Using an ID that matches the type may slightly reduce the chances of component id clashes, as, for historical reasons, it is less likely to be used by some other type of component.
+        System integration will still need to ensure that all components have unique IDs.
+
+        Component IDs are used for addressing messages to a particular component within a system.
+        A component can use any unique ID between 1 and 255 (<a href="#MAV_COMP_ID_ALL">MAV_COMP_ID_ALL</a> value is the broadcast address, used to send to all components).
+
+        Historically component ID were also used for identifying the type of component.
+        New code must not use component IDs to infer the component type, but instead check the <a href="#MAV_TYPE">MAV_TYPE</a> in the HEARTBEAT message!</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1476,6 +1498,27 @@
       <a href="#MAV_COMP_ID_CAMERA6">MAV_COMP_ID_CAMERA6</a>
      </td>
      <td>Camera #6.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_RADIO">
+     <td>110</td>
+     <td>
+      <a href="#MAV_COMP_ID_RADIO">MAV_COMP_ID_RADIO</a>
+     </td>
+     <td>Radio #1.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_RADIO2">
+     <td>111</td>
+     <td>
+      <a href="#MAV_COMP_ID_RADIO2">MAV_COMP_ID_RADIO2</a>
+     </td>
+     <td>Radio #2.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_RADIO3">
+     <td>112</td>
+     <td>
+      <a href="#MAV_COMP_ID_RADIO3">MAV_COMP_ID_RADIO3</a>
+     </td>
+     <td>Radio #3.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO1">
      <td>140</td>

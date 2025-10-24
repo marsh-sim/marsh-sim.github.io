@@ -135,7 +135,7 @@ The receivers can detect if the quaternion contains valid data by comparing the 
 <!-- AUTO-GENERATED PART BELOW, DO NOT MODIFY BY HAND -->
 
 <h2 id="definition-list">Definition list</h2>
-<p>Generated on 2025-07-23T14:59:49 from commit <a href="https://github.com/marsh-sim/mavlink/tree/dd6420bd684b0085f33c3fefd3d730a1c3c1b84a">dd6420b</a></p>
+<p>Generated on 2025-10-24T07:31:46 from commit <a href="https://github.com/marsh-sim/mavlink/tree/83a84b47fe0c409229aef358d211a98f81ec788e">83a84b4</a></p>
 <ul>
  <li><a href="#enums">Enums</a><ul>
   <li><a href="#MAV_FRAME">MAV_FRAME</a></li>
@@ -564,6 +564,15 @@ The receivers can detect if the quaternion contains valid data by comparing the 
      </td>
      <td>Command is invalid because a frame is required and the specified frame is not supported.</td>
     </tr>
+    <tr id="MAV_RESULT_NOT_IN_CONTROL">
+     <td>10</td>
+     <td>
+      <a href="#MAV_RESULT_NOT_IN_CONTROL">MAV_RESULT_NOT_IN_CONTROL</a>
+      <p style="color:red">
+       <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+     </td>
+     <td>Command has been rejected because source system is not in control of the target system/component.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_SEVERITY">MAV_SEVERITY</h3>
@@ -815,7 +824,7 @@ The receivers can detect if the quaternion contains valid data by comparing the 
     </tr>
     <tr>
      <td>7: Response Target</td>
-     <td>Target address of message stream (if message has target address fields). 0: Flight-stack default (recommended), 1: address of requestor, 2: broadcast.</td>
+     <td>Target address of message stream (if message has target address fields). 0: Flight-stack default (recommended), 1: address of requester, 2: broadcast.</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
      <td>
@@ -877,7 +886,7 @@ The receivers can detect if the quaternion contains valid data by comparing the 
     </tr>
     <tr>
      <td>7: Response Target</td>
-     <td>Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requestor, 2: broadcast.</td>
+     <td>Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requester, 2: broadcast.</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
     </tr>
@@ -1203,7 +1212,8 @@ The receivers can detect if the quaternion contains valid data by comparing the 
   <p>
    <a href="#messages">
     [Message]
-   </a>This message provides an API for manually controlling the vehicle using standard joystick axes nomenclature, along with a joystick-like input device. Unused axes can be disabled and buttons states are transmitted as individual on/off bits of a bitmask</p>
+   </a>Manual (joystick) control message.
+        This message represents movement axes and button using standard joystick axes nomenclature. Unused axes can be disabled and buttons states are transmitted as individual on/off bits of a bitmask. For more information see https://mavlink.io/en/manual_control.html</p>
   <table class="sortable">
    <thead>
     <tr>
