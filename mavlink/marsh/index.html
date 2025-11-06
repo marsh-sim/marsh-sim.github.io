@@ -125,7 +125,7 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
 <!-- AUTO-GENERATED PART BELOW, DO NOT MODIFY BY HAND -->
 
 <h2 id="definition-list">Definition list</h2>
-<p>Generated on 2025-10-24T07:31:46 from commit <a href="https://github.com/marsh-sim/mavlink/tree/83a84b47fe0c409229aef358d211a98f81ec788e">83a84b4</a></p>
+<p>Generated on 2025-11-06T14:10:50 from commit <a href="https://github.com/marsh-sim/mavlink/tree/a761f9934bc1e25f961573b2c5d0c248253d92ac">a761f99</a></p>
 <ul>
  <li><a href="#enums">Enums</a><ul>
   <li><a href="#MARSH_TYPE">MARSH_TYPE</a></li>
@@ -977,15 +977,13 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for tracking of pilot eye gaze. This is the primary message for <a href="#MARSH_TYPE_EYE_TRACKER">MARSH_TYPE_EYE_TRACKER</a>.</p>
+   </strong>Data for tracking of pilot eye gaze. This is the primary message for <a href="#MARSH_TYPE_EYE_TRACKER">MARSH_TYPE_EYE_TRACKER</a>. This is the average information about both eyes, if you need separate measurements send information with different sensor_id.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1082,6 +1080,12 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
      <td>
      </td>
      <td>Gaze focal point on surface y value (normalized 0..1, 0 is top, 1 is bottom), NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>pupil_diameter</td>
+     <td>float</td>
+     <td>mm</td>
+     <td>Estimated pupil diameter, NaN if unknown.</td>
     </tr>
    </tbody>
   </table>
