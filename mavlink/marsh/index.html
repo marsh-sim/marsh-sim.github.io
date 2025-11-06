@@ -125,7 +125,7 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
 <!-- AUTO-GENERATED PART BELOW, DO NOT MODIFY BY HAND -->
 
 <h2 id="definition-list">Definition list</h2>
-<p>Generated on 2025-11-06T14:10:50 from commit <a href="https://github.com/marsh-sim/mavlink/tree/a761f9934bc1e25f961573b2c5d0c248253d92ac">a761f99</a></p>
+<p>Generated on 2025-11-06T16:05:39 from commit <a href="https://github.com/marsh-sim/mavlink/tree/659be115e309203654a9c2b62901e75136e32d61">659be11</a></p>
 <ul>
  <li><a href="#enums">Enums</a><ul>
   <li><a href="#MARSH_TYPE">MARSH_TYPE</a></li>
@@ -134,6 +134,8 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
   <li><a href="#MARSH_MANUAL_SETPOINT_MODE">MARSH_MANUAL_SETPOINT_MODE</a></li>
   <li><a href="#MOTION_PLATFORM_MODE">MOTION_PLATFORM_MODE</a></li>
   <li><a href="#MOTION_PLATFORM_HEALTH">MOTION_PLATFORM_HEALTH</a></li>
+  <li><a href="#EYE_TRACKING_EVENT_TYPE">EYE_TRACKING_EVENT_TYPE</a></li>
+  <li><a href="#HUMAN_BODY_POINT">HUMAN_BODY_POINT</a></li>
  </ul></li>
  <li><a href="#mav_commands">Mav Commands</a><ul>
  </ul></li>
@@ -143,6 +145,8 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
   <li><a href="#REXROTH_MOTION_PLATFORM">REXROTH_MOTION_PLATFORM</a></li>
   <li><a href="#MOTION_CUE_EXTRA">MOTION_CUE_EXTRA</a></li>
   <li><a href="#EYE_TRACKING_DATA">EYE_TRACKING_DATA</a></li>
+  <li><a href="#EYE_TRACKING_EVENT">EYE_TRACKING_EVENT</a></li>
+  <li><a href="#HUMAN_BODY_POSE">HUMAN_BODY_POSE</a></li>
  </ul></li>
 </ul>
 <html>
@@ -343,12 +347,12 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
     </tr>
    </thead>
    <tbody>
-    <tr id="MARSH_MANUAL_SETPOINT_MODE_TARGET">
+    <tr id="MARSH_MANUAL_SETPOINT_MODE_DEFAULT">
      <td>0</td>
      <td>
-      <a href="#MARSH_MANUAL_SETPOINT_MODE_TARGET">MARSH_MANUAL_SETPOINT_MODE_TARGET</a>
+      <a href="#MARSH_MANUAL_SETPOINT_MODE_DEFAULT">MARSH_MANUAL_SETPOINT_MODE_DEFAULT</a>
      </td>
-     <td>Values for target inceptors positions that the pilot should follow.</td>
+     <td>Default meaning of the message. This should be sent by inceptors when using a flight control system in separate node to differentiate from FCS outputs.</td>
     </tr>
     <tr id="MARSH_MANUAL_SETPOINT_MODE_TRIM">
      <td>1</td>
@@ -356,6 +360,13 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
       <a href="#MARSH_MANUAL_SETPOINT_MODE_TRIM">MARSH_MANUAL_SETPOINT_MODE_TRIM</a>
      </td>
      <td>Values for inceptors trim positions, the exact meaning depends on the flight model.</td>
+    </tr>
+    <tr id="MARSH_MANUAL_SETPOINT_MODE_TARGET">
+     <td>2</td>
+     <td>
+      <a href="#MARSH_MANUAL_SETPOINT_MODE_TARGET">MARSH_MANUAL_SETPOINT_MODE_TARGET</a>
+     </td>
+     <td>Values for target inceptors positions that the pilot should follow.</td>
     </tr>
    </tbody>
   </table>
@@ -465,6 +476,290 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
       <a href="#MOTION_PLATFORM_HEALTH_CRITICAL">MOTION_PLATFORM_HEALTH_CRITICAL</a>
      </td>
      <td>There is a major failure that requires immediate operator action to maintain safety.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="EYE_TRACKING_EVENT_TYPE">EYE_TRACKING_EVENT_TYPE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Type of event recognised from gaze data sent in <a href="#EYE_TRACKING_EVENT">EYE_TRACKING_EVENT</a>.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="EYE_TRACKING_EVENT_TYPE_BLINK">
+     <td>0</td>
+     <td>
+      <a href="#EYE_TRACKING_EVENT_TYPE_BLINK">EYE_TRACKING_EVENT_TYPE_BLINK</a>
+     </td>
+     <td>Eye was partially closed.</td>
+    </tr>
+    <tr id="EYE_TRACKING_EVENT_TYPE_FIXATION">
+     <td>1</td>
+     <td>
+      <a href="#EYE_TRACKING_EVENT_TYPE_FIXATION">EYE_TRACKING_EVENT_TYPE_FIXATION</a>
+     </td>
+     <td>Gaze remained at particular location. Magnitude is the dispersion of position.</td>
+    </tr>
+    <tr id="EYE_TRACKING_EVENT_TYPE_SACCADE">
+     <td>2</td>
+     <td>
+      <a href="#EYE_TRACKING_EVENT_TYPE_SACCADE">EYE_TRACKING_EVENT_TYPE_SACCADE</a>
+     </td>
+     <td>Small rapid movement between fixations. Magnitude is the total angle of movement for this event.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="HUMAN_BODY_POINT">HUMAN_BODY_POINT</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Location on human body tracked in <a href="#HUMAN_BODY_POSE">HUMAN_BODY_POSE</a> message. Initial 33 values correspond to points defined in MediaPipe Pose model.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="HUMAN_BODY_POINT_NOSE">
+     <td>0</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_NOSE">HUMAN_BODY_POINT_NOSE</a>
+     </td>
+     <td>Nose.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_EYE_INNER">
+     <td>1</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_EYE_INNER">HUMAN_BODY_POINT_LEFT_EYE_INNER</a>
+     </td>
+     <td>Left eye inner.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_EYE">
+     <td>2</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_EYE">HUMAN_BODY_POINT_LEFT_EYE</a>
+     </td>
+     <td>Left eye.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_EYE_OUTER">
+     <td>3</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_EYE_OUTER">HUMAN_BODY_POINT_LEFT_EYE_OUTER</a>
+     </td>
+     <td>Left eye outer.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_EYE_INNER">
+     <td>4</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_EYE_INNER">HUMAN_BODY_POINT_RIGHT_EYE_INNER</a>
+     </td>
+     <td>Right eye inner.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_EYE">
+     <td>5</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_EYE">HUMAN_BODY_POINT_RIGHT_EYE</a>
+     </td>
+     <td>Right eye.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_EYE_OUTER">
+     <td>6</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_EYE_OUTER">HUMAN_BODY_POINT_RIGHT_EYE_OUTER</a>
+     </td>
+     <td>Right eye outer.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_EAR">
+     <td>7</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_EAR">HUMAN_BODY_POINT_LEFT_EAR</a>
+     </td>
+     <td>Left ear.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_EAR">
+     <td>8</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_EAR">HUMAN_BODY_POINT_RIGHT_EAR</a>
+     </td>
+     <td>Right ear.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_MOUTH_LEFT">
+     <td>9</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_MOUTH_LEFT">HUMAN_BODY_POINT_MOUTH_LEFT</a>
+     </td>
+     <td>Mouth left.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_MOUTH_RIGHT">
+     <td>10</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_MOUTH_RIGHT">HUMAN_BODY_POINT_MOUTH_RIGHT</a>
+     </td>
+     <td>Mouth right.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_SHOULDER">
+     <td>11</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_SHOULDER">HUMAN_BODY_POINT_LEFT_SHOULDER</a>
+     </td>
+     <td>Left shoulder.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_SHOULDER">
+     <td>12</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_SHOULDER">HUMAN_BODY_POINT_RIGHT_SHOULDER</a>
+     </td>
+     <td>Right shoulder.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_ELBOW">
+     <td>13</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_ELBOW">HUMAN_BODY_POINT_LEFT_ELBOW</a>
+     </td>
+     <td>Left elbow.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_ELBOW">
+     <td>14</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_ELBOW">HUMAN_BODY_POINT_RIGHT_ELBOW</a>
+     </td>
+     <td>Right elbow.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_WRIST">
+     <td>15</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_WRIST">HUMAN_BODY_POINT_LEFT_WRIST</a>
+     </td>
+     <td>Left wrist.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_WRIST">
+     <td>16</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_WRIST">HUMAN_BODY_POINT_RIGHT_WRIST</a>
+     </td>
+     <td>Right wrist.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_PINKY">
+     <td>17</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_PINKY">HUMAN_BODY_POINT_LEFT_PINKY</a>
+     </td>
+     <td>Left pinky.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_PINKY">
+     <td>18</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_PINKY">HUMAN_BODY_POINT_RIGHT_PINKY</a>
+     </td>
+     <td>Right pinky.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_INDEX">
+     <td>19</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_INDEX">HUMAN_BODY_POINT_LEFT_INDEX</a>
+     </td>
+     <td>Left index.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_INDEX">
+     <td>20</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_INDEX">HUMAN_BODY_POINT_RIGHT_INDEX</a>
+     </td>
+     <td>Right index.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_THUMB">
+     <td>21</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_THUMB">HUMAN_BODY_POINT_LEFT_THUMB</a>
+     </td>
+     <td>Left thumb.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_THUMB">
+     <td>22</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_THUMB">HUMAN_BODY_POINT_RIGHT_THUMB</a>
+     </td>
+     <td>Right thumb.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_HIP">
+     <td>23</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_HIP">HUMAN_BODY_POINT_LEFT_HIP</a>
+     </td>
+     <td>Left hip.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_HIP">
+     <td>24</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_HIP">HUMAN_BODY_POINT_RIGHT_HIP</a>
+     </td>
+     <td>Right hip.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_KNEE">
+     <td>25</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_KNEE">HUMAN_BODY_POINT_LEFT_KNEE</a>
+     </td>
+     <td>Left knee.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_KNEE">
+     <td>26</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_KNEE">HUMAN_BODY_POINT_RIGHT_KNEE</a>
+     </td>
+     <td>Right knee.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_ANKLE">
+     <td>27</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_ANKLE">HUMAN_BODY_POINT_LEFT_ANKLE</a>
+     </td>
+     <td>Left ankle.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_ANKLE">
+     <td>28</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_ANKLE">HUMAN_BODY_POINT_RIGHT_ANKLE</a>
+     </td>
+     <td>Right ankle.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_HEEL">
+     <td>29</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_HEEL">HUMAN_BODY_POINT_LEFT_HEEL</a>
+     </td>
+     <td>Left heel.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_HEEL">
+     <td>30</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_HEEL">HUMAN_BODY_POINT_RIGHT_HEEL</a>
+     </td>
+     <td>Right heel.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_LEFT_FOOT_INDEX">
+     <td>31</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_LEFT_FOOT_INDEX">HUMAN_BODY_POINT_LEFT_FOOT_INDEX</a>
+     </td>
+     <td>Left foot index.</td>
+    </tr>
+    <tr id="HUMAN_BODY_POINT_RIGHT_FOOT_INDEX">
+     <td>32</td>
+     <td>
+      <a href="#HUMAN_BODY_POINT_RIGHT_FOOT_INDEX">HUMAN_BODY_POINT_RIGHT_FOOT_INDEX</a>
+     </td>
+     <td>Right foot index.</td>
     </tr>
    </tbody>
   </table>
@@ -998,7 +1293,7 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot).</td>
     </tr>
     <tr>
      <td>sensor_id</td>
@@ -1086,6 +1381,181 @@ Custom messages saved in <code>.tlog</code> files before that change will not be
      <td>float</td>
      <td>mm</td>
      <td>Estimated pupil diameter, NaN if unknown.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="EYE_TRACKING_EVENT">EYE_TRACKING_EVENT (<a href="#EYE_TRACKING_EVENT">
+    #52506
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Periodic events identified in eye tracking.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+     </td>
+     <td>Start timestamp (UNIX Epoch time or time since system boot). Should match time_usec field of <a href="#EYE_TRACKING_DATA">EYE_TRACKING_DATA</a>.</td>
+    </tr>
+    <tr>
+     <td>sensor_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Sensor ID, used for identifying the device and/or person tracked. Set to zero if unknown/unused. Should match sensor_id field of <a href="#EYE_TRACKING_DATA">EYE_TRACKING_DATA</a>.</td>
+    </tr>
+    <tr>
+     <td>type</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#EYE_TRACKING_EVENT_TYPE">EYE_TRACKING_EVENT_TYPE</a>
+     </td>
+     <td>Type of event.</td>
+    </tr>
+    <tr>
+     <td>duration</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+     </td>
+     <td>Duration of event. Set to zero if not applicable.</td>
+    </tr>
+    <tr>
+     <td>confidence</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Estimator confidence between 0 and 1.</td>
+    </tr>
+    <tr>
+     <td>magnitude</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>
+     </td>
+     <td>Magnitude of the event dependent on type. Examples: dispersion of fixation, or range of movement for saccade etc.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="HUMAN_BODY_POSE">HUMAN_BODY_POSE (<a href="#HUMAN_BODY_POSE">
+    #52507
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Data for tracking of pilot body pose location.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+     </td>
+     <td>Timestamp (UNIX Epoch time or time since system boot).</td>
+    </tr>
+    <tr>
+     <td>sensor_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Sensor ID, used for identifying the device and/or person tracked. Set to zero if unknown/unused.</td>
+    </tr>
+    <tr>
+     <td>body_point</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#HUMAN_BODY_POINT">HUMAN_BODY_POINT</a>
+     </td>
+     <td>Specific point on the body described in this message.</td>
+    </tr>
+    <tr>
+     <td>position_x</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+     </td>
+     <td>X axis of body point location, NaN if unknown. The reference system depends on specific application.</td>
+    </tr>
+    <tr>
+     <td>position_y</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+     </td>
+     <td>Y axis of body point location, NaN if unknown. The reference system depends on specific application.</td>
+    </tr>
+    <tr>
+     <td>position_z</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+     </td>
+     <td>Z axis of body point location, NaN if unknown. The reference system depends on specific application.</td>
+    </tr>
+    <tr>
+     <td>video_x</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Body point on video feed x value (normalized 0..1, 0 is left, 1 is right), NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>video_y</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Body point on video feed y value (normalized 0..1, 0 is top, 1 is bottom), NaN if unknown</td>
     </tr>
    </tbody>
   </table>
