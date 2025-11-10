@@ -9,18 +9,3 @@ When ran as a command, nodes should accept the IP MARSH Manager with `-m` and `-
 
 Nodes created so far have been collected in the [marsh-sim/sim-nodes repository](https://github.com/marsh-sim/sim-nodes).
 You are welcome to ask questions, report bugs and contribute new scripts there.
-
-## Lidia instruments
-
-Python package [`lidia`](https://pypi.org/project/lidia/) can be used with MARSH starting with version 0.10 to provide instrument visualisation.
-It can be installed using the `pip` command:
-
-```bash
-pip install lidia
-```
-
-The package has multiple sources of data to choose from, in this case start it like this:
-
-```bash
-lidia marsh
-```

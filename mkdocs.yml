@@ -14,6 +14,7 @@ nav:
     - Development: manager/development.md
   - Nodes:
     - Simulator nodes: nodes/README.md
+    - Instruments: nodes/instruments.md
     - Eye tracking: nodes/eye-tracking.md
     - Development: nodes/development.md
   - Data analysis:
