@@ -16,6 +16,7 @@ nav:
     - Simulator nodes: nodes/README.md
     - Instruments: nodes/instruments.md
     - Eye tracking: nodes/eye-tracking.md
+    - Body pose: nodes/body-pose.md
     - Development: nodes/development.md
   - Data analysis:
     - MATLAB: analysis/matlab.md
