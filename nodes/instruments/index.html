@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Marek S. Lukasiewicz" /><link rel="canonical" href="https://marsh-sim.github.io/nodes/development/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Marek S. Lukasiewicz" /><link rel="canonical" href="https://marsh-sim.github.io/nodes/instruments/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Development - MARSH Documentation</title>
+    <title>Instruments - MARSH Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,9 +14,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Development";
-        var mkdocs_page_input_path = "nodes/development.md";
-        var mkdocs_page_url = "/nodes/development/";
+        var mkdocs_page_name = "Instruments";
+        var mkdocs_page_input_path = "nodes/instruments.md";
+        var mkdocs_page_url = "/nodes/instruments/";
       </script>
     
     <!--[if lt IE 9]>
@@ -56,19 +56,25 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../">Simulator nodes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../instruments/">Instruments</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Instruments</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#primary-flight-display">Primary Flight Display</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#controls-position">Controls position</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../eye-tracking/">Eye tracking</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../body-pose/">Body pose</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Development</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#example-repository">Example repository</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#message-choice">Message choice</a>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Data analysis</span></p>
@@ -107,9 +113,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Nodes</li>
-      <li class="breadcrumb-item active">Development</li>
+      <li class="breadcrumb-item active">Instruments</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/marsh-sim/marsh-sim.github.io/edit/main/docs/nodes/development.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/marsh-sim/marsh-sim.github.io/edit/main/docs/nodes/instruments.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -117,41 +123,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="node-development">Node development</h1>
-<p>Every component of the simulator should be a separate node. The nodes have to publish a <a href="../../mavlink/minimal/#HEARTBEAT">HEARTBEAT</a> message according to <a href="https://mavlink.io/en/services/heartbeat.html">Heartbeat/Connection Protocol</a>.
-There are additional simulator-specific values defined for <code>type</code> field, in the <a href="../../mavlink/marsh/#MARSH_TYPE">MARSH_TYPE</a> enum, which occupy a currently unused region of the standard <a href="../../mavlink/minimal/#MAV_TYPE">MAV_TYPE</a> (and one day might clash).
-Correctly assigning types for each node makes it easier to identify them in the manager, and troubleshoot problems in simulation.</p>
-<p>Component ids can be allocated <em>any</em> value other than zero.
-Historically the component id was also used to determine the component type, for example <code>MAV_COMP_ID_CAMERA6</code>.
-With that in mind, the <em>default</em> component id is still determined from the type to reduce the risk of collisions, according to this formula:</p>
-<pre><code>component_id = MAV_COMP_ID_USER1 + (marsh_type - MARSH_TYPE_MANAGER)
+                <h1 id="instruments">Instruments</h1>
+<p>Python package <a href="https://pypi.org/project/lidia/"><code>lidia</code></a> can be used with MARSH starting with version 0.10 to provide instrument visualisation.
+The output is rendered in a web browser, so it can be accessed from other computers, or embedded in visualisation software</p>
+<h2 id="installation">Installation</h2>
+<p>The package can be installed using any of these commands:</p>
+<pre><code class="language-sh">uv tool install lidia
+pipx install lidia
+pip install lidia  # preferably inside a virtual environment (venv)
 </code></pre>
-<p>This assigns consecutive definitions starting with <a href="../../mavlink/minimal/#MAV_COMP_ID_USER1">MAV_COMP_ID_USER1</a>, and is used throughout the authors' code.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Even though we have used the types to define our component IDs, your code must not make any assumption about the type from the id used (type is determined from <code>HEARTBEAT.type</code>, as stated in the <a href="https://mavlink.io/en/services/heartbeat.html#component-identity">MAVLink documentaton</a></p>
-</div>
-<p>If someone were to make a mistake and use <code>MARSH_TYPE</code> directly as component id, they would show up as <code>CAMERA</code> to <code>CAMERA6</code></p>
-<h2 id="example-repository">Example repository</h2>
-<p>There are multiple examples of ready-made nodes and utility functions in the <a href="https://github.com/marsh-sim/sim-nodes">marsh-sim/sim-nodes repository</a>.</p>
-<p>The names of scripts should hint at the type of component from <a href="../../mavlink/marsh/#MARSH_TYPE">MARSH_TYPE</a>.
-These are at the end of the name, and the beginning something unique, to make running a given script easier from terminal with Tab-completion.</p>
-<h2 id="message-choice">Message choice</h2>
-<p>For communicating any node-specific feature the workflow is as follows:</p>
-<ol>
-<li>Check if there is already a relevant convention for a feature in <a href="https://mavlink.io/en/services/">Microservices</a> section of Dev Guide<ul>
-<li>If nothing was found, search the <a href="https://mavlink.io/en/messages/common.html">Common Message Set</a></li>
-</ul>
-</li>
-<li>Read documentation for the service: e.g. <a href="https://mavlink.io/en/services/parameter.html">Parameter Protocol</a></li>
-<li>Read documentation for specific messages: e.g. <a href="https://mavlink.io/en/messages/common.html#SIM_STATE">SIM_STATE (#108)</a></li>
-</ol>
+<h2 id="usage">Usage</h2>
+<p>The package has multiple sources of data to choose from, in this case start it like this:</p>
+<pre><code class="language-sh">lidia marsh
+</code></pre>
+<h3 id="primary-flight-display">Primary Flight Display</h3>
+<p>By default displayed at <a href="http://localhost:5555/pfd">localhost:5555/pfd</a>.
+Magenta markers indicate target value.</p>
+<p><img alt="screenshot of primary flight display drawn with lidia" src="../lidia_pfd.png" /></p>
+<h3 id="controls-position">Controls position</h3>
+<p>By default displayed at <a href="http://localhost:5555/controls">localhost:5555/controls</a>.
+Central square shows cyclic control, left bar collective position, and lower bar, pedal position.
+Red/yellow/green arrows and circle indicate current position, blue arrows and dashed lines trim.
+Magenta stars are desired positions with dotted lines for desirable and adequate margins.</p>
+<p><img alt="screenshot of inceptor positions drawn with lidia" src="../lidia_controls.png" /></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../body-pose/" class="btn btn-neutral float-left" title="Body pose"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../analysis/matlab/" class="btn btn-neutral float-right" title="MATLAB">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="Simulator nodes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../eye-tracking/" class="btn btn-neutral float-right" title="Eye tracking">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -179,10 +179,10 @@ These are at the end of the name, and the beginning something unique, to make ru
         </span>
     
     
-      <span><a href="../body-pose/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../analysis/matlab/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../eye-tracking/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

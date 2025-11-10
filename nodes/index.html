@@ -56,11 +56,13 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Simulator nodes</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#lidia-instruments">Lidia instruments</a>
-    </li>
     </ul>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="instruments/">Instruments</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="eye-tracking/">Eye tracking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="body-pose/">Body pose</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="development/">Development</a>
                   </li>
@@ -118,20 +120,12 @@ In short, if each node has a single responsibility, it is easier to reuse them i
 <p>When ran as a command, nodes should accept the IP MARSH Manager with <code>-m</code> and <code>--manager</code> option.</p>
 <p>Nodes created so far have been collected in the <a href="https://github.com/marsh-sim/sim-nodes">marsh-sim/sim-nodes repository</a>.
 You are welcome to ask questions, report bugs and contribute new scripts there.</p>
-<h2 id="lidia-instruments">Lidia instruments</h2>
-<p>Python package <a href="https://pypi.org/project/lidia/"><code>lidia</code></a> can be used with MARSH starting with version 0.10 to provide instrument visualisation.
-It can be installed using the <code>pip</code> command:</p>
-<pre><code class="language-bash">pip install lidia
-</code></pre>
-<p>The package has multiple sources of data to choose from, in this case start it like this:</p>
-<pre><code class="language-bash">lidia marsh
-</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../manager/development/" class="btn btn-neutral float-left" title="Development"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="eye-tracking/" class="btn btn-neutral float-right" title="Eye tracking">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="instruments/" class="btn btn-neutral float-right" title="Instruments">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -162,7 +156,7 @@ It can be installed using the <code>pip</code> command:</p>
       <span><a href="../manager/development/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="eye-tracking/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="instruments/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
