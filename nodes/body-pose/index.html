@@ -137,10 +137,18 @@ The camera can measure greater distances, but this makes the view of cockpit mor
 <p><img alt="screenshot of tracking adapter" src="../body_screenshot.png" /></p>
 <h2 id="installation">Installation</h2>
 <p>Note that the RealSense cameras require a USB-C cable <strong>with USB 3 connections</strong>.</p>
+<p>The project is managed with <a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a>.
+This command should take care of dependencies and start the program:</p>
+<pre><code class="language-sh">uv run pose.py
+</code></pre>
 <h3 id="windows">Windows</h3>
 <p><a href="https://github.com/IntelRealSense/librealsense">Intel RealSense SDK</a>, get the latest stable release from the Releases section on the right.</p>
 <h2 id="tracked-points">Tracked points</h2>
 <p>Currently we're using <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker">Google's MediaPipe Pose Landmarker</a>.
+The landmark model predicts the location of 33 full-body landmarks (see figure below), each with (<code>x, y, z, visibility</code>).
+The current model does not use depth data directly, we're projecting the positions identified on 2D image into 3D space using RealSense afterwards.
+This means that the position of points is centered on the joint in 2D, but on the closest surface to camera in depth.</p>
+<p>Messages are sent only for points that have visibility higher than the minimum threshold.
 The definitions <a href="../../mavlink/marsh/#HUMAN_BODY_POINT">HUMAN_BODY_POINT</a> start with the same indices as this model's output:</p>
 <p><img alt="diagram of point positions on human body" src="../body_points.png" /></p>
 <h2 id="alternate-models">Alternate models</h2>
