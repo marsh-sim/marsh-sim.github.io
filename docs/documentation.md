@@ -34,10 +34,22 @@ mkdocs serve
 
 Content is written in Markdown and built to HTML with [MkDocs](https://www.mkdocs.org/). Markdown files should preferably be formatted with [markdownlint extension for VS Code](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint).
 
+### MAVLink
+
 The pages in the "MAVLink Definitions" section contain an initial part written normally, which is followed by automatically generated tables.
 The tables are (re-)generated with the `update_mavlink_tables.py` Python script, which should do the complete process of getting the definitions, running the original generator used for MAVLink documentation, and then replacing a relevant part of the pages.
 This script will be run when publicly deploying updates of the `main` branch.
 The generated content of the files in this repository should be commited when there are significant changes in the dialect, for convenience of offline development and reference.
+
+### Bibliography
+
+The first paragraph under headings that match citation keys are replaced by citation generated using [Pybtex](https://pybtex.org/) in `update_bibliography.py` Python script.
+They can be linked to from other documents, [like this](./bibliography.md#padfield2018).
+Subsequent paragraphs can be used for commentary how the document is relevant.
+
+The preferred tool for formatting BibTeX source is [Zotero](https://www.zotero.org/) with the [Better BibTeX plugin](https://retorque.re/zotero-better-bibtex/).
+After selecting the desired items in Zotero, right click and choose "Better BibTeX" -> "Copy BibTeX to clipboard".
+Then paste them into [bibliography.bib](./bibliography.bib).
 
 ### Recommended resources
 

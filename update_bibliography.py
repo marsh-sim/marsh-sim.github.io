@@ -5,7 +5,6 @@ Updates the bibliography page from BibTeX file.
 Doesn't accept configuration arguments by design.
 """
 
-import argparse
 from datetime import datetime
 from io import StringIO
 from mistune import create_markdown, BlockState
@@ -14,12 +13,6 @@ from os import path as p
 from pybtex.backends.markdown import Backend
 from pybtex.database import BibliographyData, parse_file
 from pybtex.style.formatting.unsrt import Style
-
-parser = argparse.ArgumentParser()
-parser.add_argument('--ignore-errors', action='store_true',
-                    help='exit with 0 exit code even if errors found')
-args = parser.parse_args()
-ignore_errors: bool = args.ignore_errors
 
 # allow running from anywhere
 root_p = p.dirname(__file__)
@@ -59,15 +52,18 @@ for i in range(len(md_ast)-1, -1, -1):
         continue
 
     next_paragraph_index = None
-    for j in range(i + 1, len(md_ast)):
+    j = i + 1
+    while j < len(md_ast):
         candidate = md_ast[j]
         if candidate["type"] == "blank_line":
+            j += 1
             continue
         if candidate["type"] == "block_html":
             # remove the details block
             del md_ast[j]
-            candidate = md_ast[j]
-        elif candidate["type"] == "paragraph":
+            continue
+
+        if candidate["type"] == "paragraph":
             next_paragraph_index = j
             break
         else:
@@ -91,13 +87,14 @@ for i in range(len(md_ast)-1, -1, -1):
     md_ast[next_paragraph_index]["children"] = [{
         "raw": f"""
 <details>
-<summary>BibTeX</summary>
+<summary>Show BibTeX</summary>
 ```bibtex
 {bib_parts[key]}
 ```
 </details>
+
 {stream.getvalue()[4:]}
-""",
+""".strip(),
         "type": "text"
     }]
 
