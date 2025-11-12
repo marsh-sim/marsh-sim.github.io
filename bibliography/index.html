@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Marek S. Lukasiewicz" /><link rel="canonical" href="https://marsh-sim.github.io/nodes/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Marek S. Lukasiewicz" /><link rel="canonical" href="https://marsh-sim.github.io/bibliography/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Simulator nodes - MARSH Documentation</title>
+    <title>Bibliography - MARSH Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,9 +14,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Simulator nodes";
-        var mkdocs_page_input_path = "nodes/README.md";
-        var mkdocs_page_url = "/nodes/";
+        var mkdocs_page_name = "Bibliography";
+        var mkdocs_page_input_path = "bibliography.md";
+        var mkdocs_page_url = "/bibliography/";
       </script>
     
     <!--[if lt IE 9]>
@@ -53,18 +53,16 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Nodes</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Simulator nodes</a>
-    <ul class="current">
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../nodes/">Simulator nodes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="instruments/">Instruments</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../nodes/instruments/">Instruments</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="eye-tracking/">Eye tracking</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../nodes/eye-tracking/">Eye tracking</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="body-pose/">Body pose</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../nodes/body-pose/">Body pose</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="development/">Development</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../nodes/development/">Development</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Data analysis</span></p>
@@ -82,12 +80,26 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Project</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../rationale/">Rationale</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../bibliography/">Bibliography</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Bibliography</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#padfield2018">padfield2018</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#lukasiewiczhapticdeviceembedded2024">lukasiewiczHapticDeviceEmbedded2024</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -104,10 +116,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Nodes</li>
-      <li class="breadcrumb-item active">Simulator nodes</li>
+          <li class="breadcrumb-item">Project</li>
+      <li class="breadcrumb-item active">Bibliography</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/marsh-sim/marsh-sim.github.io/edit/main/docs/nodes/README.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/marsh-sim/marsh-sim.github.io/edit/main/docs/bibliography.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -115,19 +127,66 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="simulator-nodes">Simulator nodes</h1>
-<p>The purpose of nodes is to maintain the <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> principle.
-In short, if each node has a single responsibility, it is easier to reuse them in new ways and avoid repeating work (see&nbsp;<a href="../rationale/">rationale</a>).</p>
-<p><img alt="diagram highlighting nodes in the structure of the simulator" src="simulator_variants_nodes.png" /></p>
-<p>When ran as a command, nodes should accept the IP MARSH Manager with <code>-m</code> and <code>--manager</code> option.</p>
-<p>Nodes created so far have been collected in the <a href="https://github.com/marsh-sim/sim-nodes">marsh-sim/sim-nodes repository</a>.
-You are welcome to ask questions, report bugs and contribute new scripts there.</p>
+                <h1 id="bibliography">Bibliography</h1>
+<p>Various documents that are relevant to this project.
+Citations on this page were generated from <a href="../bibliography.bib">this BibTeX file</a> (<a href="../documentation/#bibliography">more details</a>).</p>
+<h2 id="references">References</h2>
+<p>These sources were consulted in development:</p>
+<h3 id="padfield2018">padfield2018</h3>
+<details>
+<summary>Show BibTeX</summary>
+
+<pre><code class="language-bibtex">@book{padfield2018,
+  title = {Helicopter Flight Dynamics: Including a Treatment of Tiltrotor Aircraft},
+  author = {Padfield, Gareth D.},
+  year = 2018,
+  month = nov,
+  edition = {3rd Edition},
+  publisher = {John Wiley \&amp; Sons},
+  isbn = {978-1-119-40105-6}
+}
+</code></pre>
+
+</details>
+
+<p>Gareth D. Padfield.
+<em>Helicopter Flight Dynamics: Including a Treatment of Tiltrotor Aircraft</em>.
+John Wiley &amp; Sons, 3rd edition edition, November 2018.
+ISBN 978-1-119-40105-6.</p>
+<p>Models defined in this book were the first to be adapted to the framework.</p>
+<h2 id="usage">Usage</h2>
+<p>These are known examples of using MARSH in academic works:</p>
+<h3 id="lukasiewiczhapticdeviceembedded2024">lukasiewiczHapticDeviceEmbedded2024</h3>
+<details>
+<summary>Show BibTeX</summary>
+
+<pre><code class="language-bibtex">@inproceedings{lukasiewiczHapticDeviceEmbedded2024,
+  title = {Haptic {{Device Embedded}} in {{Rotorcraft Seats}} to {{Provide Motion Onset Cues}} in {{Flight Simulator}}},
+  booktitle = {Proceedings of the {{Vertical Flight Society}} 80th {{Annual Forum}}},
+  author = {Lukasiewicz, Marek and Zanoni, Andrea and Quaranta, Giuseppe},
+  year = 2024,
+  month = may,
+  pages = {1--8},
+  publisher = {The Vertical Flight Society},
+  address = {Montreal, Canada},
+  doi = {10.4050/F-0080-2024-1264},
+  urldate = {2025-11-12},
+  abstract = {This paper describes development and testing of a low-cost device mounted on in the pilot seat of a rotorcraft simulator with the aim of improving the perceived realism of the flight. The device acting vertically from the bottom of the seat is used to communicate changes of acceleration in the vertical direction corresponding to heave movement of the simulated aircraft. A bespoke flight simulator system was developed, featuring modular design and virtual reality (VR) visualisation to enable comparative testing with a full motion system. Objective analyses have shown similarities between the two motion cueing configurations when contrasted with only using visual cues.},
+  langid = {english}
+}
+</code></pre>
+
+</details>
+
+<p>Marek Lukasiewicz, Andrea Zanoni, and Giuseppe Quaranta.
+Haptic Device Embedded in Rotorcraft Seats to Provide Motion Onset Cues in Flight Simulator.
+In <em>Proceedings of the Vertical Flight Society 80th Annual Forum</em>, 1–8. Montreal, Canada, May 2024. The Vertical Flight Society.
+<a href="https://doi.org/10.4050/F-0080-2024-1264">doi:10.4050/F-0080-2024-1264</a>.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../manager/development/" class="btn btn-neutral float-left" title="Development"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="instruments/" class="btn btn-neutral float-right" title="Instruments">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../documentation/" class="btn btn-neutral float-left" title="Documentation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -155,10 +214,8 @@ You are welcome to ask questions, report bugs and contribute new scripts there.<
         </span>
     
     
-      <span><a href="../manager/development/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../documentation/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="instruments/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
