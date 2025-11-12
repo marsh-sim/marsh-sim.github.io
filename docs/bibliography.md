@@ -7,12 +7,12 @@ Citations on this page were generated from [this BibTeX file](./bibliography.bib
 
 These sources were consulted in development:
 
-### padfield2018
+### padfieldHelicopterFlightDynamics2018
 
 <details>
 <summary>Show BibTeX</summary>
 ```bibtex
-@book{padfield2018,
+@book{padfieldHelicopterFlightDynamics2018,
   title = {Helicopter Flight Dynamics: Including a Treatment of Tiltrotor Aircraft},
   author = {Padfield, Gareth D.},
   year = 2018,

@@ -44,7 +44,7 @@ The generated content of the files in this repository should be commited when th
 ### Bibliography
 
 The first paragraph under headings that match citation keys are replaced by citation generated using [Pybtex](https://pybtex.org/) in `update_bibliography.py` Python script.
-They can be linked to from other documents, [like this](./bibliography.md#padfield2018).
+They can be linked to from other documents, [like this](./bibliography.md#padfieldHelicopterFlightDynamics2018).
 Subsequent paragraphs can be used for commentary how the document is relevant.
 
 The preferred tool for formatting BibTeX source is [Zotero](https://www.zotero.org/) with the [Better BibTeX plugin](https://retorque.re/zotero-better-bibtex/).
