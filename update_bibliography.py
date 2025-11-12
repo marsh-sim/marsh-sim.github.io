@@ -11,7 +11,6 @@ from io import StringIO
 from mistune import create_markdown, BlockState
 from mistune.renderers.markdown import MarkdownRenderer
 from os import path as p
-from pprint import pprint
 from pybtex.backends.markdown import Backend
 from pybtex.database import BibliographyData, parse_file
 from pybtex.style.formatting.unsrt import Style
@@ -27,6 +26,18 @@ root_p = p.dirname(__file__)
 
 bib_path = p.join(root_p, "docs", "bibliography.bib")
 bib_entries = parse_file(bib_path).entries
+bib_parts = {}
+with open(bib_path, "r") as bib_file:
+    content = bib_file.read()
+    for part in content.split("@"):
+        part = part.strip()
+        if len(part) == 0:
+            continue
+        part = "@" + part
+        start = part.index("{") + 1
+        end = part.index(",")
+        key = part[start:end]
+        bib_parts[key] = part
 
 md_path = p.join(root_p, "docs", "bibliography.md")
 md_ast = []
@@ -52,6 +63,10 @@ for i in range(len(md_ast)-1, -1, -1):
         candidate = md_ast[j]
         if candidate["type"] == "blank_line":
             continue
+        if candidate["type"] == "block_html":
+            # remove the details block
+            del md_ast[j]
+            candidate = md_ast[j]
         elif candidate["type"] == "paragraph":
             next_paragraph_index = j
             break
@@ -64,13 +79,27 @@ for i in range(len(md_ast)-1, -1, -1):
             "children": [{"raw": "lorem ipsum", "type": "text"}]
         })
         next_paragraph_index = i + 1
+        print("insert for", key)
+    else:
+        print("replace for", key)
 
     single_data = BibliographyData()
     single_data.add_entry(key, bib_entries[key])
     formatted = Style().format_bibliography(single_data)
     stream = StringIO()
     Backend().write_to_stream(formatted, stream)
-    md_ast[next_paragraph_index]["children"][0]["raw"] = stream.getvalue()[4:]
+    md_ast[next_paragraph_index]["children"] = [{
+        "raw": f"""
+<details>
+<summary>BibTeX</summary>
+```bibtex
+{bib_parts[key]}
+```
+</details>
+{stream.getvalue()[4:]}
+""",
+        "type": "text"
+    }]
 
 with open(md_path, "w") as md_file:
     md_file.write(MarkdownRenderer()(md_ast, BlockState()))
