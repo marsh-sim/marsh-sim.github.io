@@ -2,7 +2,7 @@
 
 """
 Appends or updates generated tables to documentation in mavlink/
-Doesn't accept any arguments by design.
+Doesn't accept configuration arguments by design.
 """
 
 import argparse
@@ -37,10 +37,6 @@ subprocess.check_call(['git', 'checkout', 'origin/dialect'],
 mavlink_hash = subprocess.check_output(
     ['git', 'rev-parse', 'HEAD'],
     cwd=p.join(root_p, 'mavlink-repo')).decode().strip()
-
-# install packages required by upstream generator script
-subprocess.check_call([sys.executable, '-m', 'pip',
-                      'install', 'lxml', 'requests', 'bs4'])
 
 # run upstream generator
 subprocess.check_call([sys.executable, 'mavlink_gitbook.py'],

@@ -27,6 +27,7 @@ nav:
   - Project:
     - Rationale: rationale.md
     - Documentation: documentation.md
+    - Bibliography: bibliography.md
 
 theme: readthedocs
 
