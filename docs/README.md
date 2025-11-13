@@ -5,7 +5,7 @@
 It is a system for connecting loosely coupled programs into a research flight simulator.
 
 !!! note
-    Colleagues working in [FRAME-Lab](https://www.aero.polimi.it/en/research-labs/frame-lab--8) may also refer to internal [FRAME-Wiki](https://gitlab.polimi.it/DAER/frame-sim/frame-wiki/-/wikis/home) for information specific to our laboratories or anything that cannot be published in the open here.
+    Colleagues working in [FRAME-Lab](https://www.aero.polimi.it/en/research-labs/frame-lab-fixed-and-rotary-wing-aircraft-multidisciplinary-eng) may also refer to internal [FRAME-Wiki](https://gitlab.polimi.it/DAER/frame-sim/frame-wiki/-/wikis/home) for information specific to our laboratories or anything that cannot be published in the open here.
 
 ## Acknowledgements
 

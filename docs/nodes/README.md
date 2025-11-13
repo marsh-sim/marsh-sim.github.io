@@ -7,5 +7,5 @@ In short, if each node has a single responsibility, it is easier to reuse them i
 
 When ran as a command, nodes should accept the IP MARSH Manager with `-m` and `--manager` option.
 
-Nodes created so far have been collected in the [marsh-sim/sim-nodes repository](https://github.com/marsh-sim/sim-nodes).
+Most nodes created so far have been collected in the [marsh-sim/sim-nodes repository](https://github.com/marsh-sim/sim-nodes).
 You are welcome to ask questions, report bugs and contribute new scripts there.

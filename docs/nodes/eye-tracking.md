@@ -31,7 +31,7 @@ The following are provided as reference for what is in `.pur` files found in the
 
 ### Instruments
 
-Surface id **1**, example: page `pfd` of [lidia](./README.md#lidia-instruments).
+Surface id **1**, example: page `pfd` of [lidia](./instruments.md).
 
 ![diagram of AprilTags layout for instrument screen](./markers_instruments.svg)
 
@@ -43,7 +43,7 @@ Surface id **2** with a view outside the aircraft, or just the screen with visua
 
 ### Inceptors
 
-Surface id **3** showing control positions, example: page `controls` of [lidia](./README.md#lidia-instruments).
+Surface id **3** showing control positions, example: page `controls` of [lidia](./instruments.md).
 
 ![diagram of AprilTags layout for control positions](./markers_inceptors.svg)
 
