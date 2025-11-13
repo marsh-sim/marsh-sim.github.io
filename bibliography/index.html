@@ -56,6 +56,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../nodes/">Simulator nodes</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../nodes/controls/">Controls</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../nodes/instruments/">Instruments</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../nodes/eye-tracking/">Eye tracking</a>
@@ -89,12 +91,18 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#cicalinianalysisdevelopmentsimulation2023">cicaliniAnalysisDevelopmentSimulation2023</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#padfieldhelicopterflightdynamics2018">padfieldHelicopterFlightDynamics2018</a>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#zanonisimulatorexperimentsaeroelastic2025">zanoniSimulatorExperimentsAeroelastic2025</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lukasiewicztuningmotioncueing2025">lukasiewiczTuningMotionCueing2025</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#lukasiewiczhapticdeviceembedded2024">lukasiewiczHapticDeviceEmbedded2024</a>
     </li>
         </ul>
@@ -128,10 +136,31 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="bibliography">Bibliography</h1>
-<p>Various documents that are relevant to this project.
-Citations on this page were generated from <a href="../bibliography.bib">this BibTeX file</a> (<a href="../documentation/#bibliography">more details</a>).</p>
+<p>Various documents that are relevant to this project, in reverse chronological order (recent first).
+Citations on this page were generated from <a href="../bibliography.bib">this BibTeX file</a>, <a href="../documentation/#bibliography">read more</a>.</p>
 <h2 id="references">References</h2>
 <p>These sources were consulted in development:</p>
+<h3 id="cicalinianalysisdevelopmentsimulation2023">cicaliniAnalysisDevelopmentSimulation2023</h3>
+<details>
+<summary>Show BibTeX</summary>
+
+<pre><code class="language-bibtex">@mastersthesis{cicaliniAnalysisDevelopmentSimulation2023,
+  title = {Analysis, {{Development}}, and {{Simulation}} of a {{Mission System}} for {{MUM-T Operational Scenarios}}},
+  author = {Cicalini, Marco},
+  year = 2023,
+  address = {Milan, Italy},
+  abstract = {This master thesis is meant to model and simulate a mission system for Manned-Unamnned Teaming (MUM-T) operational scenarios, with a specific focus to rotorcraft applications. In order to accomplish the task, a high-level architecture to enable the teaming is designed and prototypes of Pilot Onboard Station (POS) and Ground Control Station (GCS) have been realized. The contemporary presence of an onboard station and a ground facility is the typical control architecture proposed in the few currently available MUM-T works of art, since it grants redundancy and deeper mission management. Also, it is set a helicopter flight simulator based on data from real vehicles able to visualize, interact, and team with a swarm of Unmanned Air Vehicles (UAVs) to complete common tasks. The overall system of systems is meant to grant a complete simulation environment for MUM-T and is specifically designed for testing purposes with Human In The Loop (HITL), so to grant a platform to simulate scenarios and take confidence with this new technological concept. The identified testing laboratory for the final hardware \&amp; software setup and test campaign is the ATTILA VR flight simulator of Politecnico di Milano. The proposed work is the result of a curricular internship in TXT E-TECH s.r.l., which led to the definition of the proposed design.},
+  langid = {english},
+  school = {Politecnico di Milano},
+}
+</code></pre>
+
+</details>
+
+<p>Marco Cicalini.
+Analysis, Development, and Simulation of a Mission System for MUM-T Operational Scenarios.
+Master's thesis, Politecnico di Milano, Milan, Italy, 2023.</p>
+<p>This thesis has informed the requirements for practical simulation of Manned-Unmanned Teaming, and has introduced the use of MAVLink to the FRAME-Lab.</p>
 <h3 id="padfieldhelicopterflightdynamics2018">padfieldHelicopterFlightDynamics2018</h3>
 <details>
 <summary>Show BibTeX</summary>
@@ -156,6 +185,48 @@ ISBN 978-1-119-40105-6.</p>
 <p>Models defined in this book were the first to be adapted to the framework.</p>
 <h2 id="usage">Usage</h2>
 <p>These are known examples of using MARSH in academic works:</p>
+<h3 id="zanonisimulatorexperimentsaeroelastic2025">zanoniSimulatorExperimentsAeroelastic2025</h3>
+<details>
+<summary>Show BibTeX</summary>
+
+<pre><code class="language-bibtex">@inproceedings{zanoniSimulatorExperimentsAeroelastic2025,
+  title = {Simulator {{Experiments}} for {{Aeroelastic Rotorcraft-Pilot Couplings}}},
+  booktitle = {Proceedings of the 51st {{European Rotorcraft Forum}}},
+  author = {Zanoni, Andrea and Lukasiewicz, Marek S. and Masarati, Pierangelo and Zilletti, Michele},
+  year = 2025,
+  month = sep,
+  address = {Venice, Italy},
+  abstract = {Rotorcraft pilot couplings, particularly pilot-assisted oscillations, result from interactions between pilot biomechanics and vehicle dynamics, potentially causing instabilities. Traditional stability analysis uses simplified biodynamic feedthrough models, focusing on inter-pilot variability under standard conditions. However, biodynamic feedthrough varies with muscle activation, which changes based on task demands. This study employs a purposely-developed testbed to evaluate the biodynamic feedthrough in pilot-in-the-loop tests. Two scenarios were tested: maintaining leveled flight amid turbulence in degraded visual conditions and an ADS-33 vertical repositioning maneuver. Preliminary results indicate significant differences between closed-loop flight behavior and open-loop biodynamic feedthrough estimates, confirming task-dependent changes in pilot impedance. This work advances rotorcraft-pilot coupling risk assessment by capturing real-world pilot-vehicle coupling, moving beyond static biomechanical models.},
+  langid = {english}
+}
+</code></pre>
+
+</details>
+
+<p>Andrea Zanoni, Marek S. Lukasiewicz, Pierangelo Masarati, and Michele Zilletti.
+Simulator Experiments for Aeroelastic Rotorcraft-Pilot Couplings.
+In <em>Proceedings of the 51st European Rotorcraft Forum</em>. Venice, Italy, September 2025.</p>
+<h3 id="lukasiewicztuningmotioncueing2025">lukasiewiczTuningMotionCueing2025</h3>
+<details>
+<summary>Show BibTeX</summary>
+
+<pre><code class="language-bibtex">@inproceedings{lukasiewiczTuningMotionCueing2025,
+  title = {Tuning of {{Motion Cueing Filters}} for {{Virtual Reality Flight Simulators}}},
+  booktitle = {Proceedings of the 51st {{European Rotorcraft Forum}}},
+  author = {Lukasiewicz, Marek S. and Touzard, Margaux and Quaranta, Giuseppe},
+  year = 2025,
+  month = sep,
+  address = {Venice, Italy},
+  abstract = {This paper describes a practical implementation of a research flight simulator used as a test bed for piloted rotorcraft, which incorporates a motion platform system and Virtual Reality (VR) visualisation software developed in-house. The work involves integrating the motion platform with the flight model, performing safety assessments and validation, and tuning the motion cues. The motion system was characterised experimentally and evaluated with criteria found in literature, which have identified deficiencies in the translational degrees of freedom. Basic pilot evaluation has focused on other issues, with little feedback about the motion cues themselves; thus, the tuning was limited to adjusting the overall gain for the motion platform. These preliminary results suggest a preference for lower intensity movements, which some unique features of this VR-based setup can explain.},
+  langid = {english}
+}
+</code></pre>
+
+</details>
+
+<p>Marek S. Lukasiewicz, Margaux Touzard, and Giuseppe Quaranta.
+Tuning of Motion Cueing Filters for Virtual Reality Flight Simulators.
+In <em>Proceedings of the 51st European Rotorcraft Forum</em>. Venice, Italy, September 2025.</p>
 <h3 id="lukasiewiczhapticdeviceembedded2024">lukasiewiczHapticDeviceEmbedded2024</h3>
 <details>
 <summary>Show BibTeX</summary>

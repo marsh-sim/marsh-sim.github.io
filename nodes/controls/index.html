@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Marek S. Lukasiewicz" /><link rel="canonical" href="https://marsh-sim.github.io/nodes/instruments/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Marek S. Lukasiewicz" /><link rel="canonical" href="https://marsh-sim.github.io/nodes/controls/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Instruments - MARSH Documentation</title>
+    <title>Controls - MARSH Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,9 +14,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Instruments";
-        var mkdocs_page_input_path = "nodes/instruments.md";
-        var mkdocs_page_url = "/nodes/instruments/";
+        var mkdocs_page_name = "Controls";
+        var mkdocs_page_input_path = "nodes/controls.md";
+        var mkdocs_page_url = "/nodes/controls/";
       </script>
     
     <!--[if lt IE 9]>
@@ -56,21 +56,13 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../">Simulator nodes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../controls/">Controls</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Instruments</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Controls</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#primary-flight-display">Primary Flight Display</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#controls-position">Controls position</a>
-    </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#roadmap">Roadmap</a>
     </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../instruments/">Instruments</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../eye-tracking/">Eye tracking</a>
                   </li>
@@ -117,9 +109,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Nodes</li>
-      <li class="breadcrumb-item active">Instruments</li>
+      <li class="breadcrumb-item active">Controls</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/marsh-sim/marsh-sim.github.io/edit/main/docs/nodes/instruments.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/marsh-sim/marsh-sim.github.io/edit/main/docs/nodes/controls.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -127,35 +119,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="instruments">Instruments</h1>
-<p>Python package <a href="https://pypi.org/project/lidia/"><code>lidia</code></a> can be used with MARSH starting with version 0.10 to provide instrument visualisation.
-The output is rendered in a web browser, so it can be accessed from other computers, or embedded in visualisation software</p>
-<h2 id="installation">Installation</h2>
-<p>The package can be installed using any of these commands:</p>
-<pre><code class="language-sh">uv tool install lidia
-pipx install lidia
-pip install lidia  # preferably inside a virtual environment (venv)
-</code></pre>
-<h2 id="usage">Usage</h2>
-<p>The package has multiple sources of data to choose from, in this case start it like this:</p>
-<pre><code class="language-sh">lidia marsh
-</code></pre>
-<h3 id="primary-flight-display">Primary Flight Display</h3>
-<p>By default displayed at <a href="http://localhost:5555/pfd">localhost:5555/pfd</a>.
-Magenta markers indicate target value.</p>
-<p><img alt="screenshot of primary flight display drawn with lidia" src="../lidia_pfd.png" /></p>
-<h3 id="controls-position">Controls position</h3>
-<p>By default displayed at <a href="http://localhost:5555/controls">localhost:5555/controls</a>.
-Central square shows cyclic control, left bar collective position, and lower bar, pedal position.
-Red/yellow/green arrows and circle indicate current position, blue arrows and dashed lines trim.
-Magenta stars are desired positions with dotted lines for desirable and adequate margins.</p>
-<p><img alt="screenshot of inceptor positions drawn with lidia" src="../lidia_controls.png" /></p>
+                <h1 id="controls">Controls</h1>
+<p>Also referred to as pilot inceptors, these nodes should send <a href="../../mavlink/marsh/#MARSH_TYPE_CONTROLS">MARSH_TYPE_CONTROLS</a> in their <a href="../../mavlink/minimal/#HEARTBEAT">HEARTBEAT</a> message, and send the pilot inputs in <a href="../../mavlink/common/#MANUAL_CONTROL">MANUAL_CONTROL</a>.</p>
+<p>Currently the main implementation is <a href="https://github.com/marsh-sim/sim-nodes/blob/main/joystick_controls.py"><code>joystick_controls.py</code></a> for generic USB HID devices. Axis mapping can be adjusted with parameters, but it is already configured for:</p>
+<ul>
+<li>Thrustmaster T-Flight HOTAS X (make sure the switch is in PC position, not PS3)</li>
+<li>ATTILA-Sim controls using Arduino Leonardo</li>
+</ul>
+<p>Alternatively there is <a href="https://github.com/marsh-sim/sim-nodes/blob/main/labjack_controls.py"><code>labjack_controls.py</code></a> for measuring analog sensors using <a href="https://labjack.com/products/labjack-t4">Labjack T4 board</a>.</p>
+<h2 id="roadmap">Roadmap</h2>
+<p>To support flight control systems as a node separate from flight models, the FCS will send <a href="../../mavlink/common/#MANUAL_CONTROL">MANUAL_CONTROL</a> when used.
+This means that all the control scripts here should be configurable to send <a href="../../mavlink/common/#MANUAL_SETPOINT">MANUAL_SETPOINT</a> with <code>mode_switch</code> set to <a href="../../mavlink/marsh/#MARSH_MANUAL_SETPOINT_MODE_DEFAULT">MARSH_MANUAL_SETPOINT_MODE_DEFAULT</a> to differentiate between controls before and after FCS.</p>
+<p>To support control inputs sent from more than one device, the flight model implementations should be able to only update valid values from <a href="../../mavlink/common/#MANUAL_CONTROL">MANUAL_CONTROL</a> messages.
+Until that is the case, the recommended approach is to handle that by forwarding in the controls node, cf. <code>labjack_controls.py</code> with <code>--cyclic-port</code> argument.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../controls/" class="btn btn-neutral float-left" title="Controls"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../eye-tracking/" class="btn btn-neutral float-right" title="Eye tracking">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="Simulator nodes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../instruments/" class="btn btn-neutral float-right" title="Instruments">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -183,10 +165,10 @@ Magenta stars are desired positions with dotted lines for desirable and adequate
         </span>
     
     
-      <span><a href="../controls/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../eye-tracking/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../instruments/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
