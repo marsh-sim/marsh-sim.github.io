@@ -1,11 +1,34 @@
 # Bibliography
 
-Various documents that are relevant to this project.
-Citations on this page were generated from [this BibTeX file](./bibliography.bib) ([more details](./documentation.md#bibliography)).
+Various documents that are relevant to this project, in reverse chronological order (recent first).
+Citations on this page were generated from [this BibTeX file](./bibliography.bib), [read more](./documentation.md#bibliography).
 
 ## References
 
 These sources were consulted in development:
+
+### cicaliniAnalysisDevelopmentSimulation2023
+
+<details>
+<summary>Show BibTeX</summary>
+```bibtex
+@mastersthesis{cicaliniAnalysisDevelopmentSimulation2023,
+  title = {Analysis, {{Development}}, and {{Simulation}} of a {{Mission System}} for {{MUM-T Operational Scenarios}}},
+  author = {Cicalini, Marco},
+  year = 2023,
+  address = {Milan, Italy},
+  abstract = {This master thesis is meant to model and simulate a mission system for Manned-Unamnned Teaming (MUM-T) operational scenarios, with a specific focus to rotorcraft applications. In order to accomplish the task, a high-level architecture to enable the teaming is designed and prototypes of Pilot Onboard Station (POS) and Ground Control Station (GCS) have been realized. The contemporary presence of an onboard station and a ground facility is the typical control architecture proposed in the few currently available MUM-T works of art, since it grants redundancy and deeper mission management. Also, it is set a helicopter flight simulator based on data from real vehicles able to visualize, interact, and team with a swarm of Unmanned Air Vehicles (UAVs) to complete common tasks. The overall system of systems is meant to grant a complete simulation environment for MUM-T and is specifically designed for testing purposes with Human In The Loop (HITL), so to grant a platform to simulate scenarios and take confidence with this new technological concept. The identified testing laboratory for the final hardware \& software setup and test campaign is the ATTILA VR flight simulator of Politecnico di Milano. The proposed work is the result of a curricular internship in TXT E-TECH s.r.l., which led to the definition of the proposed design.},
+  langid = {english},
+  school = {Politecnico di Milano},
+}
+```
+</details>
+
+Marco Cicalini\.
+Analysis, Development, and Simulation of a Mission System for MUM\-T Operational Scenarios\.
+Master's thesis, Politecnico di Milano, Milan, Italy, 2023\.
+
+This thesis has informed the requirements for practical simulation of Manned-Unmanned Teaming, and has introduced the use of MAVLink to the FRAME-Lab.
 
 ### padfieldHelicopterFlightDynamics2018
 
@@ -24,10 +47,10 @@ These sources were consulted in development:
 ```
 </details>
 
-Gareth D. Padfield.
-*Helicopter Flight Dynamics: Including a Treatment of Tiltrotor Aircraft*.
-John Wiley &amp; Sons, 3rd edition edition, November 2018.
-ISBN 978-1-119-40105-6.
+Gareth D\. Padfield\.
+*Helicopter Flight Dynamics: Including a Treatment of Tiltrotor Aircraft*\.
+John Wiley &amp; Sons, 3rd edition edition, November 2018\.
+ISBN 978\-1\-119\-40105\-6\.
 
 Models defined in this book were the first to be adapted to the framework.
 
@@ -35,4 +58,73 @@ Models defined in this book were the first to be adapted to the framework.
 
 These are known examples of using MARSH in academic works:
 
+### zanoniSimulatorExperimentsAeroelastic2025
+
+<details>
+<summary>Show BibTeX</summary>
+```bibtex
+@inproceedings{zanoniSimulatorExperimentsAeroelastic2025,
+  title = {Simulator {{Experiments}} for {{Aeroelastic Rotorcraft-Pilot Couplings}}},
+  booktitle = {Proceedings of the 51st {{European Rotorcraft Forum}}},
+  author = {Zanoni, Andrea and Lukasiewicz, Marek S. and Masarati, Pierangelo and Zilletti, Michele},
+  year = 2025,
+  month = sep,
+  address = {Venice, Italy},
+  abstract = {Rotorcraft pilot couplings, particularly pilot-assisted oscillations, result from interactions between pilot biomechanics and vehicle dynamics, potentially causing instabilities. Traditional stability analysis uses simplified biodynamic feedthrough models, focusing on inter-pilot variability under standard conditions. However, biodynamic feedthrough varies with muscle activation, which changes based on task demands. This study employs a purposely-developed testbed to evaluate the biodynamic feedthrough in pilot-in-the-loop tests. Two scenarios were tested: maintaining leveled flight amid turbulence in degraded visual conditions and an ADS-33 vertical repositioning maneuver. Preliminary results indicate significant differences between closed-loop flight behavior and open-loop biodynamic feedthrough estimates, confirming task-dependent changes in pilot impedance. This work advances rotorcraft-pilot coupling risk assessment by capturing real-world pilot-vehicle coupling, moving beyond static biomechanical models.},
+  langid = {english}
+}
+```
+</details>
+
+Andrea Zanoni, Marek S\. Lukasiewicz, Pierangelo Masarati, and Michele Zilletti\.
+Simulator Experiments for Aeroelastic Rotorcraft\-Pilot Couplings\.
+In *Proceedings of the 51st European Rotorcraft Forum*\. Venice, Italy, September 2025\.
+
+### lukasiewiczTuningMotionCueing2025
+
+<details>
+<summary>Show BibTeX</summary>
+```bibtex
+@inproceedings{lukasiewiczTuningMotionCueing2025,
+  title = {Tuning of {{Motion Cueing Filters}} for {{Virtual Reality Flight Simulators}}},
+  booktitle = {Proceedings of the 51st {{European Rotorcraft Forum}}},
+  author = {Lukasiewicz, Marek S. and Touzard, Margaux and Quaranta, Giuseppe},
+  year = 2025,
+  month = sep,
+  address = {Venice, Italy},
+  abstract = {This paper describes a practical implementation of a research flight simulator used as a test bed for piloted rotorcraft, which incorporates a motion platform system and Virtual Reality (VR) visualisation software developed in-house. The work involves integrating the motion platform with the flight model, performing safety assessments and validation, and tuning the motion cues. The motion system was characterised experimentally and evaluated with criteria found in literature, which have identified deficiencies in the translational degrees of freedom. Basic pilot evaluation has focused on other issues, with little feedback about the motion cues themselves; thus, the tuning was limited to adjusting the overall gain for the motion platform. These preliminary results suggest a preference for lower intensity movements, which some unique features of this VR-based setup can explain.},
+  langid = {english}
+}
+```
+</details>
+
+Marek S\. Lukasiewicz, Margaux Touzard, and Giuseppe Quaranta\.
+Tuning of Motion Cueing Filters for Virtual Reality Flight Simulators\.
+In *Proceedings of the 51st European Rotorcraft Forum*\. Venice, Italy, September 2025\.
+
 ### lukasiewiczHapticDeviceEmbedded2024
+
+<details>
+<summary>Show BibTeX</summary>
+```bibtex
+@inproceedings{lukasiewiczHapticDeviceEmbedded2024,
+  title = {Haptic {{Device Embedded}} in {{Rotorcraft Seats}} to {{Provide Motion Onset Cues}} in {{Flight Simulator}}},
+  booktitle = {Proceedings of the {{Vertical Flight Society}} 80th {{Annual Forum}}},
+  author = {Lukasiewicz, Marek and Zanoni, Andrea and Quaranta, Giuseppe},
+  year = 2024,
+  month = may,
+  pages = {1--8},
+  publisher = {The Vertical Flight Society},
+  address = {Montreal, Canada},
+  doi = {10.4050/F-0080-2024-1264},
+  urldate = {2025-11-12},
+  abstract = {This paper describes development and testing of a low-cost device mounted on in the pilot seat of a rotorcraft simulator with the aim of improving the perceived realism of the flight. The device acting vertically from the bottom of the seat is used to communicate changes of acceleration in the vertical direction corresponding to heave movement of the simulated aircraft. A bespoke flight simulator system was developed, featuring modular design and virtual reality (VR) visualisation to enable comparative testing with a full motion system. Objective analyses have shown similarities between the two motion cueing configurations when contrasted with only using visual cues.},
+  langid = {english}
+}
+```
+</details>
+
+Marek Lukasiewicz, Andrea Zanoni, and Giuseppe Quaranta\.
+Haptic Device Embedded in Rotorcraft Seats to Provide Motion Onset Cues in Flight Simulator\.
+In *Proceedings of the Vertical Flight Society 80th Annual Forum*, 1�8\. Montreal, Canada, May 2024\. The Vertical Flight Society\.
+[doi:10\.4050/F\-0080\-2024\-1264](https://doi.org/10.4050/F-0080-2024-1264)\.
