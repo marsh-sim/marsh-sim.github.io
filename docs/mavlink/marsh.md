@@ -5,11 +5,17 @@ This page documents all extensions to MAVLink that were required for the simulat
 The definitions are in the [marsh.xml file](https://github.com/marsh-sim/mavlink/blob/dialect/message_definitions/v1.0/marsh.xml) on the [`dialect` branch](https://github.com/marsh-sim/mavlink/tree/dialect) in our fork of main [MAVLink repository](https://github.com/mavlink/mavlink).
 All other projects need to generate and appropriate libraries, following the [mavlink.io – Generating MAVLink Libraries](https://mavlink.io/en/getting_started/generate_libraries.html) documentation.
 
-When in need of a definition for a given functionality which is not covered here, first consult the Common Message Set, both [our subset](./common.md) and [full list](https://mavlink.io/en/messages/common.html). If a new definition is actually needed, follow the original guide on [how to define MAVLink Messages & Enums](https://mavlink.io/en/guide/define_xml_element.html)
+When in need of a definition for a given functionality which is not covered here, first consult the Common Message Set, both [our subset](./common.md) and [full list](https://mavlink.io/en/messages/common.html).
+If a new definition is actually needed, follow the original guide on [how to define MAVLink Messages & Enums](https://mavlink.io/en/guide/define_xml_element.html).
+
+Changing message definitions (id, field names, types, order) breaks over-the-wire compatibility by design.
+Thus it's **strongly** recommended to avoid doing that.
+Also, if a functionality can be achieved just by defining some new enums or commands, this means that the code will be able to use upstream MAVLink libraries without modifications.
 
 !!! note
     The ids of all messages have been changed in [commit 3621719](https://github.com/marsh-sim/mavlink/commit/36217197c05040c41e6a427cb4908ca40106d83e) on 2025-05-16 for inclusion in the upstream MAVLink repository.
     Custom messages saved in `.tlog` files before that change will not be recognised by newer code.
+    The `pymavlink` library includes [`mavtranslatelog.py`](https://github.com/ArduPilot/pymavlink/blob/master/tools/mavtranslatelog.py) tool which was written to resolve that.
 
 <!-- markdownlint-disable -->
 <!-- AUTO-GENERATED PART BELOW, DO NOT MODIFY BY HAND -->
