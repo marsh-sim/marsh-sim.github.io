@@ -123,17 +123,22 @@
 <p>This page documents all extensions to MAVLink that were required for the simulator.</p>
 <p>The definitions are in the <a href="https://github.com/marsh-sim/mavlink/blob/dialect/message_definitions/v1.0/marsh.xml">marsh.xml file</a> on the <a href="https://github.com/marsh-sim/mavlink/tree/dialect"><code>dialect</code> branch</a> in our fork of main <a href="https://github.com/mavlink/mavlink">MAVLink repository</a>.
 All other projects need to generate and appropriate libraries, following the <a href="https://mavlink.io/en/getting_started/generate_libraries.html">mavlink.io – Generating MAVLink Libraries</a> documentation.</p>
-<p>When in need of a definition for a given functionality which is not covered here, first consult the Common Message Set, both <a href="../common/">our subset</a> and <a href="https://mavlink.io/en/messages/common.html">full list</a>. If a new definition is actually needed, follow the original guide on <a href="https://mavlink.io/en/guide/define_xml_element.html">how to define MAVLink Messages &amp; Enums</a></p>
+<p>When in need of a definition for a given functionality which is not covered here, first consult the Common Message Set, both <a href="../common/">our subset</a> and <a href="https://mavlink.io/en/messages/common.html">full list</a>.
+If a new definition is actually needed, follow the original guide on <a href="https://mavlink.io/en/guide/define_xml_element.html">how to define MAVLink Messages &amp; Enums</a>.</p>
+<p>Changing message definitions (id, field names, types, order) breaks over-the-wire compatibility by design.
+Thus it's <strong>strongly</strong> recommended to avoid doing that.
+Also, if a functionality can be achieved just by defining some new enums or commands, this means that the code will be able to use upstream MAVLink libraries without modifications.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The ids of all messages have been changed in <a href="https://github.com/marsh-sim/mavlink/commit/36217197c05040c41e6a427cb4908ca40106d83e">commit 3621719</a> on 2025-05-16 for inclusion in the upstream MAVLink repository.
-Custom messages saved in <code>.tlog</code> files before that change will not be recognised by newer code.</p>
+Custom messages saved in <code>.tlog</code> files before that change will not be recognised by newer code.
+The <code>pymavlink</code> library includes <a href="https://github.com/ArduPilot/pymavlink/blob/master/tools/mavtranslatelog.py"><code>mavtranslatelog.py</code></a> tool which was written to resolve that.</p>
 </div>
 <!-- markdownlint-disable -->
 <!-- AUTO-GENERATED PART BELOW, DO NOT MODIFY BY HAND -->
 
 <h2 id="definition-list">Definition list</h2>
-<p>Generated on 2025-11-13T14:30:02 from commit <a href="https://github.com/marsh-sim/mavlink/tree/659be115e309203654a9c2b62901e75136e32d61">659be11</a></p>
+<p>Generated on 2025-11-27T11:21:22 from commit <a href="https://github.com/marsh-sim/mavlink/tree/659be115e309203654a9c2b62901e75136e32d61">659be11</a></p>
 <ul>
  <li><a href="#enums">Enums</a><ul>
   <li><a href="#MARSH_TYPE">MARSH_TYPE</a></li>
