@@ -144,12 +144,20 @@ The application will probably work on other platforms, but only those targets ar
 <li><a href="https://www.python.org/">Python</a></li>
 <li>A C++ 17 compiler for the platform<ul>
 <li>GCC for Linux</li>
-<li>MSVC for Windows (installed with Visual Studio)</li>
+<li>LLVM-MinGW recommended for Windows<ul>
+<li>Alternatively MSVC (installed with Visual Studio)</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="https://www.qt.io/download-open-source">Qt for Open Source Development</a><ul>
-<li>Qt version <strong>6.5</strong></li>
+<li>Qt version <strong>6.8</strong><ul>
+<li>Choose the version for your compiler</li>
+<li>All Additional Libraries</li>
+</ul>
+</li>
 <li>Qt Creator</li>
+<li><em>Windows LLVM-MinGW</em> can be installed from Build Tools section</li>
 <li><em>Ubuntu only</em>: Manually install XCB library: <code>sudo apt install libxcb-cursor0</code></li>
 </ul>
 </li>
@@ -185,7 +193,7 @@ pip install -r requirements.txt
 </code></pre>
 <h3 id="qt-application">Qt application</h3>
 <p>Launch Qt Creator, click "Open Project..." on the left and open the <code>CMakeLists.txt</code> file in  the<code>marsh-manager</code> directory.</p>
-<p>When shown the Configure window, mark a kit that starts with "Desktop Qt 6.5" and click "Configure Project" in the bottom right corner.</p>
+<p>When shown the Configure window, choose your selected compiler kit and click "Configure Project" in the bottom right corner.</p>
 <p>The project can be compiled and optionally built using the buttons in the bottom left corner, or the "Build" menu on the top menu bar.
 This should rebuild all the necessary files, and optionally start the application and attach a debugger.</p>
 <div class="admonition note">
