@@ -9,10 +9,14 @@ The application will probably work on other platforms, but only those targets ar
 - [Python](https://www.python.org/)
 - A C++ 17 compiler for the platform
     - GCC for Linux
-    - MSVC for Windows (installed with Visual Studio)
+    - LLVM-MinGW recommended for Windows
+        - Alternatively MSVC (installed with Visual Studio)
 - [Qt for Open Source Development](https://www.qt.io/download-open-source)
-    - Qt version **6.5**
+    - Qt version **6.8**
+        - Choose the version for your compiler
+        - All Additional Libraries
     - Qt Creator
+    - *Windows LLVM-MinGW* can be installed from Build Tools section
     - *Ubuntu only*: Manually install XCB library: `sudo apt install libxcb-cursor0`
 - *Optional, but recommended*: Qt installs its own CMake, but you may need to install `cmake-format` manually, with `pip install cmakelang` or `apt install cmake-format`
 
@@ -65,7 +69,7 @@ python scripts/update_mavlink.py
 
 Launch Qt Creator, click "Open Project..." on the left and open the `CMakeLists.txt` file in  the`marsh-manager` directory.
 
-When shown the Configure window, mark a kit that starts with "Desktop Qt 6.5" and click "Configure Project" in the bottom right corner.
+When shown the Configure window, choose your selected compiler kit and click "Configure Project" in the bottom right corner.
 
 The project can be compiled and optionally built using the buttons in the bottom left corner, or the "Build" menu on the top menu bar.
 This should rebuild all the necessary files, and optionally start the application and attach a debugger.
