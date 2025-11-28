@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Marek S. Lukasiewicz" /><link rel="canonical" href="https://marsh-sim.github.io/nodes/visualisation/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Visualisation - MARSH Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../external_links.css" rel="stylesheet" />
+        <link href="../../mavlink_table.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Visualisation";
+        var mkdocs_page_input_path = "nodes/visualisation.md";
+        var mkdocs_page_url = "/nodes/visualisation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MARSH Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Manager</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../manager/">MARSH Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../manager/development/">Development</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Nodes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Simulator nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../controls/">Controls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../instruments/">Instruments</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Visualisation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#nav_ofs_hdg">NAV_OFS_HDG</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nav_ofs_x">NAV_OFS_X</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nav_ofs_x_1">NAV_OFS_X</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#local_frame_lat">LOCAL_FRAME_LAT</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#local_frame_lon">LOCAL_FRAME_LON</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#roadmap">Roadmap</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#development">Development</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#windows-setup">Windows setup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#build">Build</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deprecated-ue5">Deprecated UE5</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#reasons-for-deprecation">Reasons for deprecation</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../eye-tracking/">Eye tracking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../body-pose/">Body pose</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Data analysis</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../analysis/matlab/">MATLAB</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAVLink definitions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mavlink/minimal/">Minimal Set</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mavlink/common/">Subset of Common Set</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mavlink/marsh/">MARSH Dialect</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Project</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../rationale/">Rationale</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../documentation/">Documentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../bibliography/">Bibliography</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MARSH Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Nodes</li>
+      <li class="breadcrumb-item active">Visualisation</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/marsh-sim/marsh-sim.github.io/edit/main/docs/nodes/visualisation.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="visualisation">Visualisation</h1>
+<p>Developed using <a href="https://godotengine.org/">Godot Engine</a> and configured to display cockpit <a href="../instruments/">instruments</a> with <a href="https://pypi.org/project/lidia">lidia</a> Python package.</p>
+<p>The environment features all obstacles suggested by ADS-33, but the vertical repositioning is modified to provide a reference similar to hover board at 15 and 40 feet above ground.</p>
+<p><a href="../visualisation_environment.png">Screenshot showing the environment</a></p>
+<h2 id="installation">Installation</h2>
+<p>Download the release from <a href="https://github.com/marsh-sim/marsh-sim.github.io/releases">Releases page of this documentation</a></p>
+<p>Alternatively see <a href="#development">development section below</a> for instructions how to run the project using Godot Editor.</p>
+<h2 id="usage">Usage</h2>
+<p>The application will attempt to start in VR, but if it fails it will display the default pilot viewpoint looking forward.
+In that mode, mouse movement can be used to rotate the camera, like in first-person video games.</p>
+<p><a href="../visualisation_pov.png">Screenshot of pilot's point of view</a></p>
+<h3 id="parameters">Parameters</h3>
+<p>These can be modified over MAVLink, for example using MARSH Manager.</p>
+<p>Example changes to <code>NAV_OFS_</code> parameters to start in given positions:</p>
+<ul>
+<li>Sidestep, vertical repositioning: all default</li>
+<li>Accelerate/decelerate: <code>HDG</code> = -90</li>
+<li>Hover maneuver: <code>X</code> = 50, <code>Y</code> = 50</li>
+<li>Start of slalom: <code>HDG</code> = -90, <code>X</code> = -100, <code>Y</code> = 300</li>
+</ul>
+<h4 id="nav_ofs_hdg">NAV_OFS_HDG</h4>
+<p>Displayed heading relative to default position, in degrees.</p>
+<h4 id="nav_ofs_x">NAV_OFS_X</h4>
+<p>Starting position offset, forward in default orientation, in meters.</p>
+<h4 id="nav_ofs_x_1">NAV_OFS_X</h4>
+<p>Starting position offset, right in default orientation, in meters.</p>
+<h4 id="local_frame_lat">LOCAL_FRAME_LAT</h4>
+<p>Latitude of local coordinate frame origin when using messages with global position, in degrees.</p>
+<h4 id="local_frame_lon">LOCAL_FRAME_LON</h4>
+<p>Longitude of local coordinate frame origin when using messages with global position, in degrees.</p>
+<h2 id="roadmap">Roadmap</h2>
+<ul>
+<li>Try to have some acceptable setup for Varjo even without the tracker</li>
+<li>Rework the fly area</li>
+<li>Make it bigger</li>
+<li>Keep it square to avoid assymetric geometry</li>
+<li>Don't use the flat plane, just flatten the terrain</li>
+<li>Make the terrain mostly green, but add some small patches of different color</li>
+<li>Fix z-figthing when looking at the runway from afar</li>
+<li>Reduce pixel artifacts</li>
+<li>Adjust antialiasing</li>
+<li>Ensure there are mipmaps and they're used</li>
+</ul>
+<h2 id="development">Development</h2>
+<p>The source code is hosted using internal Git service of Politecnico di Milano at <a href="https://gitlab.polimi.it/DAER/frame-sim/marsh/visualisation-marsh">DAER/FRAME-Sim/MARSH/visualisation-marsh</a>.
+There is a public mirror using <a href="https://forgejo.org/">Forgejo</a> at <code>git(dot)lukasiewicz(dot)tech/DAER/visualisation-marsh</code> <em>not a link to avoid automated crawlers</em>.</p>
+<p>The asset files like textures and models are very big, so the project also uses <a href="https://git-lfs.com/">Git Large File Storage</a>.
+Once installed, it should work correctly with usual <code>git</code> commands but you may need to run this if you install it after cloning the repository:</p>
+<pre><code class="language-sh">git lfs pull
+</code></pre>
+<p>This repository uses <a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">Git Submodules</a>, to get all the code you need to run either:</p>
+<pre><code class="language-sh">git clone --recurse-submodules &lt;address of this repository&gt;
+# Or at any later point
+git submodule update --init --recursive
+</code></pre>
+<p>Using Godot v4.4.
+Install SCons with <code>pipx install scons</code>.
+You will need a C++ compiler, you might have one already on Linux, see below for Windows, otherwise in <a href="https://docs.godotengine.org/en/stable/contributing/development/compiling/index.html">Godot documentation</a>.</p>
+<p>For updating MAVLink generator, you additionally need <code>pip install future</code>.
+It is recommended to install any packages in a <a href="https://docs.python.org/3/library/venv.html">virtual environment</a>, for example:</p>
+<pre><code class="language-sh">python3 -m venv venv
+source venv/bin/activate
+pip install future
+</code></pre>
+<p>Some files are generated, run the following commands on first setup and when dependencies change:</p>
+<pre><code class="language-sh">godot --dump-extension-api  # after updating Godot
+python update_mavlink.py    # after updating MAVLink dialect
+python update_addons.py     # after changing any addon submodules
+scons compile_commands      # after modifying SConstruct
+cd project/addons/gdcef; python build.py
+</code></pre>
+<h3 id="windows-setup">Windows setup</h3>
+<p>The most convenient way of getting a C++ compiler is via the LLVM-MinGW project (by the way, it optimizes the binary more).
+Download the <code>llvm-mingw-...-msvcrt-x86_64.zip</code> from the <a href="https://github.com/mstorsjo/llvm-mingw/releases">Releases page</a>.
+Unzip the archive to some location you like, and add its <code>bin</code> folder to <code>Path</code> using the "Edit environment variables for your account" program.</p>
+<h3 id="build">Build</h3>
+<p>To build the GDExtension binary run SCons in the repository root, the default arguments have been added to the file.</p>
+<pre><code class="language-sh">scons
+</code></pre>
+<p>When building for Windows with MinGW-LLVM, you need to <a href="https://docs.godotengine.org/en/stable/contributing/development/compiling/compiling_for_windows.html#selecting-a-compiler">select this compiler</a>:</p>
+<pre><code class="language-powershell">scons platform=windows use_mingw=yes use_llvm=yes
+</code></pre>
+<h2 id="deprecated-ue5">Deprecated UE5</h2>
+<p>This visualisation is made in Unreal Engine 5. The scenery features all recommended ground references from the ADS-33E standard, and the visual helicopter model is the <a href="https://en.wikipedia.org/wiki/Eurocopter_MH-65_Dolphin">Eurocopter MH-65 Dolphin</a>. The instruments shown inside the cockpit are rendered by <code>lidia</code> package described above, so it must be running locally with the standard port to display them.</p>
+<p>Controls:
+- Use the mouse to look around
+- Move the viewpoint with <code>W</code> forward, <code>S</code> backward, <code>E</code> up, and <code>C</code> down
+- Cycle the fog intensity with <code>F</code>
+- Exit with <code>Alt+F4</code> :smiling_imp:</p>
+<p>To start the simulation in different locations of the scenery or different headings, edit the parameters using MARSH Manager window. You can also remotely change the fog intensity this way.</p>
+<p>If VR hardware is connected, the visualisation will start in the VR mode, otherwise it will run same as a regular fullscreen game.</p>
+<p><img alt="Environment screenshot" src="../visualisation_ue5.png" /></p>
+<p>Unfortunately, source code for Unreal Engine projects is quite incompatible with Git, so the Subversion repository was hosted privately.</p>
+<h3 id="reasons-for-deprecation">Reasons for deprecation</h3>
+<ul>
+<li>Very lengthy installation process, and difficult with the network configuration at the laboratory</li>
+<li>Little to no support for editing projects on Linux</li>
+<li>Licensing of used assets forbids distribution in editable form.</li>
+<li>Had unresolved performance problems when using VR headset with platform tracker</li>
+<li>Had visual artifacts when using with Varjo headset, that we didn't manage to resolve. While Godot is less visually appealing at the start, it's a much simpler system.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../instruments/" class="btn btn-neutral float-left" title="Instruments"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../eye-tracking/" class="btn btn-neutral float-right" title="Eye tracking">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>© 2024, Marek S. Lukasiewicz, CC-BY 4.0</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/marsh-sim/marsh-sim.github.io" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../instruments/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../eye-tracking/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
