@@ -65,7 +65,9 @@ The goal for this setup of the documentation was to make it simple to update to 
 
 The web pages are generated with MkDocs, because it uses Python which most colleagues already know. The alternatives used by related projects like GitBook (for MAVLink Dev Guide) are not free anymore, and VuePress (for PX4) requires NodeJS. Initially the more popular Sphinx was chosen, but didn't play nicely with Markdown files. This was deemed more important, since we already use it for a README.md file in every repository, is much more popular than reStructured Text, and has simpler syntax.
 
-Hosting the page through GitHub Pages and building through GitHub Actions mean there are no dedicated servers needed to be maintained by users. A fully open-source solution independent of a specific for-profit company would be preferred, but at least this can serve as introduction to contributing to other software outside of the University.
+Hosting the page through GitHub Pages and building through GitHub Actions mean there are no dedicated servers needed to be maintained by users.
+A fully open-source solution independent of a specific for-profit company would be preferred, but at least this can serve as introduction to contributing to other software outside of the University.
+For new open-source projects, the authors recommend [Codeberg](https://codeberg.org/) operated by a German non-profit.
 
 An early goal for documentation of the dialect was to provide a user experience very close to using the standard messages. The files for MAVLink definitions are re-generated every time the page is published, but can also be updated in the repository. This was chosen to keep the repository simple (no submodules), and always up to date with the newest definitions in the fork. The generated content isn't ignored by git, so the results are the same when working with the repository offline.
 
