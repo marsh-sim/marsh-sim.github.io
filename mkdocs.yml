@@ -16,6 +16,7 @@ nav:
     - Simulator nodes: nodes/README.md
     - Controls: nodes/controls.md
     - Instruments: nodes/instruments.md
+    - Visualisation: nodes/visualisation.md
     - Eye tracking: nodes/eye-tracking.md
     - Body pose: nodes/body-pose.md
     - Development: nodes/development.md
