@@ -4,7 +4,7 @@ Developed using [Godot Engine](https://godotengine.org/) and configured to displ
 
 The environment features all obstacles suggested by ADS-33, but the vertical repositioning is modified to provide a reference similar to hover board at 15 and 40 feet above ground.
 
-[Screenshot showing the environment](./visualisation_environment.png)
+![Screenshot showing the environment](./visualisation_environment.png)
 
 ## Installation
 
@@ -17,7 +17,7 @@ Alternatively see [development section below](#development) for instructions how
 The application will attempt to start in VR, but if it fails it will display the default pilot viewpoint looking forward.
 In that mode, mouse movement can be used to rotate the camera, like in first-person video games.
 
-[Screenshot of pilot's point of view](./visualisation_pov.png)
+![Screenshot of pilot's point of view](./visualisation_pov.png)
 
 ### Parameters
 
