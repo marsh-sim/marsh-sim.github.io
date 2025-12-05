@@ -125,23 +125,14 @@
 <p>Requires the "<a href="https://www.mathworks.com/products/uav.html">UAV Toolbox</a>" to be installed</p>
 </div>
 <p>The <code>.tlog</code> files <a href="../../manager/#saving-data">saved by MARSH Manager</a> can be loaded with <a href="https://www.mathworks.com/help/uav/ref/mavlinktlog.html"><code>mavlinktlog</code></a> function.
-However, the implementation of <a href="https://it.mathworks.com/help/uav/ref/mavlinkdialect.html"><code>mavlinkdialect</code></a> has the following errors that make reading custom messages more complicated than it would seem from the documentation:</p>
-<ul>
-<li>The parser crashes with "Dot indexing is not supported for variables of this type." when it encounters a message field that does not have a <code>&lt;description&gt;</code> element containing text, which prevents us from loading <code>all.xml</code></li>
-<li>Seems to ignore the <code>&lt;include&gt;common.xml&lt;/include&gt;</code> line in dialect file</li>
-</ul>
-<p>To work around this, the messages can be extracted in multiple steps with separate dialect definitions:</p>
-<pre><code class="language-matlab">dialect_common = mavlinkdialect(&quot;common.xml&quot;);
-logimport_common= mavlinktlog(&quot;./data/YYMMDDTHHMMSS_comment.tlog&quot;, dialect_common);
+Example code:</p>
+<pre><code class="language-matlab">% This requires a local copy, which would typically be created by update_mavlink.py
+dialect = mavlinkdialect(&quot;./mavlink_repo/message_definitions/v1.0/marsh.xml&quot;);
+logimport = mavlinktlog(&quot;./data/YYYYMMDDTHHMMSS_comment.tlog&quot;, dialect);
 
-sim_state_msgs = readmsg(logimport_common, 'MessageName', 'SIM_STATE');
+sim_state_msgs = readmsg(logimport, 'MessageName', 'SIM_STATE');
 sim_state_data = sim_state_msgs.Messages{1};
-
-% This requires a local copy, which would typically be created by update_mavlink.py
-dialect_marsh = mavlinkdialect(&quot;./mavlink_repo/message_definitions/v1.0/marsh.xml&quot;);
-logimport_marsh = mavlinktlog(&quot;./data/YYMMDDTHHMMSS_comment.tlog&quot;, dialect_marsh);
-
-mps_msgs = readmsg(logimport,'MessageName','MOTION_PLATFORM_STATE');
+mps_msgs = readmsg(logimport, 'MessageName', 'MOTION_PLATFORM_STATE');
 mps_data = mps_msgs.Messages{1};
 </code></pre>
               
