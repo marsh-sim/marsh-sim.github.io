@@ -2,6 +2,7 @@
     "[markdown]": {
         "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
         "editor.formatOnSave": true,
+        "editor.tabSize": 4
     },
     "[yaml]": {
         // doing strange indentation in mkdocs.yml

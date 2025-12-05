@@ -22,8 +22,8 @@ The application will attempt to start in VR, but if it fails it will display the
 
 - Use the mouse to look around when not using VR
 - Move the viewpoint with `W` forward, `S` backward, `A` left, `D` right, `E` up, and `C` down
-  - Reset this position to initial with `Q`
-  - Does not work when physically tracking the cockpit position (eg. Vive Tracker on motion platform)
+    - Reset this position to initial with `Q`
+    - Does not work when physically tracking the cockpit position (eg. Vive Tracker on motion platform)
 - Exit with `Alt+F4`
 
 ### Parameters
@@ -61,14 +61,14 @@ Longitude of local coordinate frame origin when using messages with global posit
 
 - Try to have some acceptable setup for Varjo even without the tracker
 - Rework the fly area
-  - Make it bigger
-  - Keep it square to avoid assymetric geometry
-  - Don't use the flat plane, just flatten the terrain
-  - Make the terrain mostly green, but add some small patches of different color
+    - Make it bigger
+    - Keep it square to avoid assymetric geometry
+    - Don't use the flat plane, just flatten the terrain
+    - Make the terrain mostly green, but add some small patches of different color
 - Fix z-figthing when looking at the runway from afar
 - Reduce pixel artifacts
-  - Adjust antialiasing
-  - Ensure there are mipmaps and they're used
+    - Adjust antialiasing
+    - Ensure there are mipmaps and they're used
 
 ## Development
 
