@@ -15,9 +15,16 @@ Alternatively see [development section below](#development) for instructions how
 ## Usage
 
 The application will attempt to start in VR, but if it fails it will display the default pilot viewpoint looking forward.
-In that mode, mouse movement can be used to rotate the camera, like in first-person video games.
 
 ![Screenshot of pilot's point of view](./visualisation_pov.png)
+
+### Controls
+
+- Use the mouse to look around when not using VR
+- Move the viewpoint with `W` forward, `S` backward, `A` left, `D` right, `E` up, and `C` down
+  - Reset this position to initial with `Q`
+  - Does not work when physically tracking the cockpit position (eg. Vive Tracker on motion platform)
+- Exit with `Alt+F4`
 
 ### Parameters
 
@@ -134,7 +141,7 @@ Controls:
 - Use the mouse to look around
 - Move the viewpoint with `W` forward, `S` backward, `E` up, and `C` down
 - Cycle the fog intensity with `F`
-- Exit with `Alt+F4` :smiling_imp:
+- Exit with `Alt+F4` 😈
 
 To start the simulation in different locations of the scenery or different headings, edit the parameters using MARSH Manager window. You can also remotely change the fog intensity this way.
 
