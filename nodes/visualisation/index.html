@@ -170,9 +170,11 @@
 <h3 id="controls">Controls</h3>
 <ul>
 <li>Use the mouse to look around when not using VR</li>
-<li>Move the viewpoint with <code>W</code> forward, <code>S</code> backward, <code>A</code> left, <code>D</code> right, <code>E</code> up, and <code>C</code> down</li>
+<li>Move the viewpoint with <code>W</code> forward, <code>S</code> backward, <code>A</code> left, <code>D</code> right, <code>E</code> up, and <code>C</code> down<ul>
 <li>Reset this position to initial with <code>Q</code></li>
 <li>Does not work when physically tracking the cockpit position (eg. Vive Tracker on motion platform)</li>
+</ul>
+</li>
 <li>Exit with <code>Alt+F4</code></li>
 </ul>
 <h3 id="parameters">Parameters</h3>
@@ -197,15 +199,19 @@
 <h2 id="roadmap">Roadmap</h2>
 <ul>
 <li>Try to have some acceptable setup for Varjo even without the tracker</li>
-<li>Rework the fly area</li>
+<li>Rework the fly area<ul>
 <li>Make it bigger</li>
 <li>Keep it square to avoid assymetric geometry</li>
 <li>Don't use the flat plane, just flatten the terrain</li>
 <li>Make the terrain mostly green, but add some small patches of different color</li>
+</ul>
+</li>
 <li>Fix z-figthing when looking at the runway from afar</li>
-<li>Reduce pixel artifacts</li>
+<li>Reduce pixel artifacts<ul>
 <li>Adjust antialiasing</li>
 <li>Ensure there are mipmaps and they're used</li>
+</ul>
+</li>
 </ul>
 <h2 id="development">Development</h2>
 <p>The source code is hosted using internal Git service of Politecnico di Milano at <a href="https://gitlab.polimi.it/DAER/frame-sim/marsh/visualisation-marsh">DAER/FRAME-Sim/MARSH/visualisation-marsh</a>.
