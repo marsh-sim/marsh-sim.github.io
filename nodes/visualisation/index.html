@@ -66,6 +66,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#controls">Controls</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#nav_ofs_hdg">NAV_OFS_HDG</a>
@@ -163,9 +165,16 @@
 <p>Download the release from <a href="https://github.com/marsh-sim/marsh-sim.github.io/releases">Releases page of this documentation</a></p>
 <p>Alternatively see <a href="#development">development section below</a> for instructions how to run the project using Godot Editor.</p>
 <h2 id="usage">Usage</h2>
-<p>The application will attempt to start in VR, but if it fails it will display the default pilot viewpoint looking forward.
-In that mode, mouse movement can be used to rotate the camera, like in first-person video games.</p>
+<p>The application will attempt to start in VR, but if it fails it will display the default pilot viewpoint looking forward.</p>
 <p><img alt="Screenshot of pilot's point of view" src="../visualisation_pov.png" /></p>
+<h3 id="controls">Controls</h3>
+<ul>
+<li>Use the mouse to look around when not using VR</li>
+<li>Move the viewpoint with <code>W</code> forward, <code>S</code> backward, <code>A</code> left, <code>D</code> right, <code>E</code> up, and <code>C</code> down</li>
+<li>Reset this position to initial with <code>Q</code></li>
+<li>Does not work when physically tracking the cockpit position (eg. Vive Tracker on motion platform)</li>
+<li>Exit with <code>Alt+F4</code></li>
+</ul>
 <h3 id="parameters">Parameters</h3>
 <p>These can be modified over MAVLink, for example using MARSH Manager.</p>
 <p>Example changes to <code>NAV_OFS_</code> parameters to start in given positions:</p>
@@ -243,7 +252,7 @@ Unzip the archive to some location you like, and add its <code>bin</code> folder
 - Use the mouse to look around
 - Move the viewpoint with <code>W</code> forward, <code>S</code> backward, <code>E</code> up, and <code>C</code> down
 - Cycle the fog intensity with <code>F</code>
-- Exit with <code>Alt+F4</code> :smiling_imp:</p>
+- Exit with <code>Alt+F4</code> 😈</p>
 <p>To start the simulation in different locations of the scenery or different headings, edit the parameters using MARSH Manager window. You can also remotely change the fog intensity this way.</p>
 <p>If VR hardware is connected, the visualisation will start in the VR mode, otherwise it will run same as a regular fullscreen game.</p>
 <p><img alt="Environment screenshot" src="../visualisation_ue5.png" /></p>
