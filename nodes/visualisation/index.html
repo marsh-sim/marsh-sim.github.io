@@ -70,6 +70,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a>
         <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fog_density">FOG_DENSITY</a>
+    </li>
     <li class="toctree-l4"><a class="reference internal" href="#nav_ofs_hdg">NAV_OFS_HDG</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#nav_ofs_x">NAV_OFS_X</a>
@@ -175,6 +177,7 @@
 <li>Does not work when physically tracking the cockpit position (eg. Vive Tracker on motion platform)</li>
 </ul>
 </li>
+<li>Cycle between predefined fog density values with <code>F</code> and backwards with <code>Shift+F</code></li>
 <li>Exit with <code>Alt+F4</code></li>
 </ul>
 <h3 id="parameters">Parameters</h3>
@@ -186,6 +189,10 @@
 <li>Hover maneuver: <code>X</code> = 50, <code>Y</code> = 50</li>
 <li>Start of slalom: <code>HDG</code> = -90, <code>X</code> = -100, <code>Y</code> = 300</li>
 </ul>
+<h4 id="fog_density">FOG_DENSITY</h4>
+<p>This controls the Density property of Exponential Fog effect.
+When parameter is exactly 0, fog is disabled.
+For other values the density is equal to 10^param, (eg. 0.01 density for -2).</p>
 <h4 id="nav_ofs_hdg">NAV_OFS_HDG</h4>
 <p>Displayed heading relative to default position, in degrees.</p>
 <h4 id="nav_ofs_x">NAV_OFS_X</h4>
@@ -201,7 +208,6 @@
 <li>Try to have some acceptable setup for Varjo even without the tracker</li>
 <li>Rework the fly area<ul>
 <li>Make it bigger</li>
-<li>Keep it square to avoid assymetric geometry</li>
 <li>Don't use the flat plane, just flatten the terrain</li>
 <li>Make the terrain mostly green, but add some small patches of different color</li>
 </ul>

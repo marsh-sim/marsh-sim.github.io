@@ -140,7 +140,7 @@ The <code>pymavlink</code> library includes <a href="https://github.com/ArduPilo
 <!-- AUTO-GENERATED PART BELOW, DO NOT MODIFY BY HAND -->
 
 <h2 id="definition-list">Definition list</h2>
-<p>Generated on 2025-12-05T17:46:22 from commit <a href="https://github.com/marsh-sim/mavlink/tree/659be115e309203654a9c2b62901e75136e32d61">659be11</a></p>
+<p>Generated on 2026-01-15T16:05:16 from commit <a href="https://github.com/marsh-sim/mavlink/tree/2ccbc3267b3b941e473060c0eda41338d5553d0b">2ccbc32</a></p>
 <ul>
  <li><a href="#enums">Enums</a><ul>
   <li><a href="#MARSH_TYPE">MARSH_TYPE</a></li>
@@ -153,6 +153,7 @@ The <code>pymavlink</code> library includes <a href="https://github.com/ArduPilo
   <li><a href="#HUMAN_BODY_POINT">HUMAN_BODY_POINT</a></li>
  </ul></li>
  <li><a href="#mav_commands">Mav Commands</a><ul>
+  <li><a href="#MAV_CMD_DO_EXPERIMENT_CONTROL">MAV_CMD_DO_EXPERIMENT_CONTROL</a></li>
  </ul></li>
  <li><a href="#messages">Messages</a><ul>
   <li><a href="#CONTROL_LOADING_AXIS">CONTROL_LOADING_AXIS</a></li>
@@ -268,7 +269,21 @@ The <code>pymavlink</code> library includes <a href="https://github.com/ArduPilo
      <td>
       <a href="#MARSH_TYPE_EXPERIMENT_DIRECTOR">MARSH_TYPE_EXPERIMENT_DIRECTOR</a>
      </td>
+     <td>Component handling the acquisition of ElectroMioGraphy (EMG) signals.</td>
+    </tr>
+    <tr id="MARSH_TYPE_EMG">
+     <td>112</td>
+     <td>
+      <a href="#MARSH_TYPE_EMG">MARSH_TYPE_EMG</a>
+     </td>
      <td>Principal component controlling the main scenario of a given test, (unlike lower level <a href="#MARSH_TYPE_PILOT_TARGET">MARSH_TYPE_PILOT_TARGET</a> or <a href="#MARSH_TYPE_MANAGER">MARSH_TYPE_MANAGER</a> for overall communication).</td>
+    </tr>
+    <tr id="MARSH_TYPE_BODY_TRACKER">
+     <td>113</td>
+     <td>
+      <a href="#MARSH_TYPE_BODY_TRACKER">MARSH_TYPE_BODY_TRACKER</a>
+     </td>
+     <td>Component providing body pose estimation and tracking of the pilot body.</td>
     </tr>
    </tbody>
   </table>
@@ -786,6 +801,52 @@ The <code>pymavlink</code> library includes <a href="https://github.com/ArduPilo
    </strong>
    <p>MAVLink commands (<a href="#mav_commands">MAV_CMD</a>) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
   </blockquote>
+  <p>MARSH-specific MAVLink commands in the reserved ID range 52500-52599.</p>
+  <h3 id="MAV_CMD_DO_EXPERIMENT_CONTROL">MAV_CMD_DO_EXPERIMENT_CONTROL (<a href="#MAV_CMD_DO_EXPERIMENT_CONTROL">52500</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Control experiment data collection. Used to synchronize start/stop of data recording across multiple simulation components.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Enable</td>
+     <td>Enable (1) or disable (0) experiment data collection.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Reserved (set to 0)</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Reserved (set to 0)</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Reserved (set to 0)</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Reserved (set to 0)</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Reserved (set to 0)</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Reserved (set to 0)</td>
+    </tr>
+   </tbody>
+  </table>
   <h2 id="messages">MAVLink Messages</h2>
   <h3 id="CONTROL_LOADING_AXIS">CONTROL_LOADING_AXIS (<a href="#CONTROL_LOADING_AXIS">
     #52501
