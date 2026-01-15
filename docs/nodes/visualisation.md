@@ -24,6 +24,7 @@ The application will attempt to start in VR, but if it fails it will display the
 - Move the viewpoint with `W` forward, `S` backward, `A` left, `D` right, `E` up, and `C` down
     - Reset this position to initial with `Q`
     - Does not work when physically tracking the cockpit position (eg. Vive Tracker on motion platform)
+- Cycle between predefined fog density values with `F` and backwards with `Shift+F`
 - Exit with `Alt+F4`
 
 ### Parameters
@@ -36,6 +37,12 @@ Example changes to `NAV_OFS_` parameters to start in given positions:
 - Accelerate/decelerate: `HDG` = -90
 - Hover maneuver: `X` = 50, `Y` = 50
 - Start of slalom: `HDG` = -90, `X` = -100, `Y` = 300
+
+#### FOG_DENSITY
+
+This controls the Density property of Exponential Fog effect.
+When parameter is exactly 0, fog is disabled.
+For other values the density is equal to 10^param, (eg. 0.01 density for -2).
 
 #### NAV_OFS_HDG
 
@@ -62,7 +69,6 @@ Longitude of local coordinate frame origin when using messages with global posit
 - Try to have some acceptable setup for Varjo even without the tracker
 - Rework the fly area
     - Make it bigger
-    - Keep it square to avoid assymetric geometry
     - Don't use the flat plane, just flatten the terrain
     - Make the terrain mostly green, but add some small patches of different color
 - Fix z-figthing when looking at the runway from afar
