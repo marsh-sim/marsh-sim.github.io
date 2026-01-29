@@ -53,6 +53,10 @@ The preferred tool for formatting BibTeX source is [Zotero](https://www.zotero.o
 After selecting the desired items in Zotero, right click and choose "Better BibTeX" -> "Copy BibTeX to clipboard".
 Then paste them into [bibliography.bib](./bibliography.bib).
 
+!!! warning
+    Pybtex has been found to be quite picky about data in the `.bib` file.
+    This is why it is not enabled in CI updates, and it is recommended to do the exact process outlined above or closely follow current examples.
+
 ### Recommended resources
 
 - [Make a Readme](https://www.makeareadme.com/)
