@@ -140,7 +140,7 @@ The <code>pymavlink</code> library includes <a href="https://github.com/ArduPilo
 <!-- AUTO-GENERATED PART BELOW, DO NOT MODIFY BY HAND -->
 
 <h2 id="definition-list">Definition list</h2>
-<p>Generated on 2026-01-15T16:05:16 from commit <a href="https://github.com/marsh-sim/mavlink/tree/2ccbc3267b3b941e473060c0eda41338d5553d0b">2ccbc32</a></p>
+<p>Generated on 2026-01-29T11:12:21 from commit <a href="https://github.com/marsh-sim/mavlink/tree/a1b83057f14bfae3869dbae0972009a7d2dda1ff">a1b8305</a></p>
 <ul>
  <li><a href="#enums">Enums</a><ul>
   <li><a href="#MARSH_TYPE">MARSH_TYPE</a></li>
@@ -808,7 +808,7 @@ The <code>pymavlink</code> library includes <a href="https://github.com/ArduPilo
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Control experiment data collection. Used to synchronize start/stop of data recording across multiple simulation components.</p>
+   </a>Control experiment data collection. Used to synchronize start/stop of data recording across multiple simulation components. Parameters 2 and 3 can be used by applications to match the name of log file created by MARSH Manager.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -822,12 +822,12 @@ The <code>pymavlink</code> library includes <a href="https://github.com/ArduPilo
      <td>Enable (1) or disable (0) experiment data collection.</td>
     </tr>
     <tr>
-     <td>2</td>
-     <td>Reserved (set to 0)</td>
+     <td>2: Log Day</td>
+     <td>Date of logging start, stored as days since 1970-01-01. Quotient of Unix epoch divided by 86400.</td>
     </tr>
     <tr>
-     <td>3</td>
-     <td>Reserved (set to 0)</td>
+     <td>3: Log Seconds</td>
+     <td>Time of logging start, stored as seconds since UTC midnight. Remainder of Unix epoch divided by 86400.</td>
     </tr>
     <tr>
      <td>4</td>
