@@ -58,6 +58,8 @@ Models defined in this book were the first to be adapted to the framework.
 
 These are known examples of using MARSH in academic works:
 
+### de_franceschi_design_2025
+
 ### zanoniSimulatorExperimentsAeroelastic2025
 
 <details>
