@@ -30,6 +30,7 @@ nav:
     - Rationale: rationale.md
     - Documentation: documentation.md
     - Bibliography: bibliography.md
+    - About: about.md
 
 theme: readthedocs
 
