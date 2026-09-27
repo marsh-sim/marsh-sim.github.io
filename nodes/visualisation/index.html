@@ -76,7 +76,7 @@
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#nav_ofs_x">NAV_OFS_X</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#nav_ofs_x_1">NAV_OFS_X</a>
+    <li class="toctree-l4"><a class="reference internal" href="#nav_ofs_y">NAV_OFS_Y</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#local_frame_lat">LOCAL_FRAME_LAT</a>
     </li>
@@ -160,7 +160,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="visualisation">Visualisation</h1>
-<p>Developed using <a href="https://godotengine.org/">Godot Engine</a> and configured to display cockpit <a href="../instruments/">instruments</a> with <a href="https://pypi.org/project/lidia">lidia</a> Python package.</p>
+<p>Developed using <a href="https://godotengine.org/">Godot Engine</a> and includes cockpit <a href="../instruments/">instruments</a> that mimic "PFD" and "Controls" screens from <code>lidia</code>.</p>
 <p>The environment features all obstacles suggested by ADS-33, but the vertical repositioning is modified to provide a reference similar to hover board at 15 and 40 feet above ground.</p>
 <p><img alt="Screenshot showing the environment" src="../visualisation_environment.png" /></p>
 <h2 id="installation">Installation</h2>
@@ -197,7 +197,7 @@ For other values the density is equal to 10^param, (eg. 0.01 density for -2).</p
 <p>Displayed heading relative to default position, in degrees.</p>
 <h4 id="nav_ofs_x">NAV_OFS_X</h4>
 <p>Starting position offset, forward in default orientation, in meters.</p>
-<h4 id="nav_ofs_x_1">NAV_OFS_X</h4>
+<h4 id="nav_ofs_y">NAV_OFS_Y</h4>
 <p>Starting position offset, right in default orientation, in meters.</p>
 <h4 id="local_frame_lat">LOCAL_FRAME_LAT</h4>
 <p>Latitude of local coordinate frame origin when using messages with global position, in degrees.</p>
@@ -245,7 +245,6 @@ pip install future
 python update_mavlink.py    # after updating MAVLink dialect
 python update_addons.py     # after changing any addon submodules
 scons compile_commands      # after modifying SConstruct
-cd project/addons/gdcef; python build.py
 </code></pre>
 <h3 id="windows-setup">Windows setup</h3>
 <p>The most convenient way of getting a C++ compiler is via the LLVM-MinGW project (by the way, it optimizes the binary more).
@@ -260,11 +259,13 @@ Unzip the archive to some location you like, and add its <code>bin</code> folder
 </code></pre>
 <h2 id="deprecated-ue5">Deprecated UE5</h2>
 <p>This visualisation is made in Unreal Engine 5. The scenery features all recommended ground references from the ADS-33E standard, and the visual helicopter model is the <a href="https://en.wikipedia.org/wiki/Eurocopter_MH-65_Dolphin">Eurocopter MH-65 Dolphin</a>. The instruments shown inside the cockpit are rendered by <code>lidia</code> package described above, so it must be running locally with the standard port to display them.</p>
-<p>Controls:
-- Use the mouse to look around
-- Move the viewpoint with <code>W</code> forward, <code>S</code> backward, <code>E</code> up, and <code>C</code> down
-- Cycle the fog intensity with <code>F</code>
-- Exit with <code>Alt+F4</code> 😈</p>
+<p>Controls:</p>
+<ul>
+<li>Use the mouse to look around</li>
+<li>Move the viewpoint with <code>W</code> forward, <code>S</code> backward, <code>E</code> up, and <code>C</code> down</li>
+<li>Cycle the fog intensity with <code>F</code></li>
+<li>Exit with <code>Alt+F4</code> 😈</li>
+</ul>
 <p>To start the simulation in different locations of the scenery or different headings, edit the parameters using MARSH Manager window. You can also remotely change the fog intensity this way.</p>
 <p>If VR hardware is connected, the visualisation will start in the VR mode, otherwise it will run same as a regular fullscreen game.</p>
 <p><img alt="Environment screenshot" src="../visualisation_ue5.png" /></p>
