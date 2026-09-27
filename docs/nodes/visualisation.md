@@ -1,6 +1,6 @@
 # Visualisation
 
-Developed using [Godot Engine](https://godotengine.org/) and configured to display cockpit [instruments](./instruments.md) with [lidia](https://pypi.org/project/lidia) Python package.
+Developed using [Godot Engine](https://godotengine.org/) and includes cockpit [instruments](./instruments.md) that mimic "PFD" and "Controls" screens from `lidia`.
 
 The environment features all obstacles suggested by ADS-33, but the vertical repositioning is modified to provide a reference similar to hover board at 15 and 40 feet above ground.
 
@@ -52,7 +52,7 @@ Displayed heading relative to default position, in degrees.
 
 Starting position offset, forward in default orientation, in meters.
 
-#### NAV_OFS_X
+#### NAV_OFS_Y
 
 Starting position offset, right in default orientation, in meters.
 
@@ -116,7 +116,6 @@ godot --dump-extension-api  # after updating Godot
 python update_mavlink.py    # after updating MAVLink dialect
 python update_addons.py     # after changing any addon submodules
 scons compile_commands      # after modifying SConstruct
-cd project/addons/gdcef; python build.py
 ```
 
 ### Windows setup
@@ -144,6 +143,7 @@ scons platform=windows use_mingw=yes use_llvm=yes
 This visualisation is made in Unreal Engine 5. The scenery features all recommended ground references from the ADS-33E standard, and the visual helicopter model is the [Eurocopter MH-65 Dolphin](https://en.wikipedia.org/wiki/Eurocopter_MH-65_Dolphin). The instruments shown inside the cockpit are rendered by `lidia` package described above, so it must be running locally with the standard port to display them.
 
 Controls:
+
 - Use the mouse to look around
 - Move the viewpoint with `W` forward, `S` backward, `E` up, and `C` down
 - Cycle the fog intensity with `F`
