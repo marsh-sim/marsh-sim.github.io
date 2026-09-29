@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Marek S. Lukasiewicz" /><link rel="canonical" href="https://marsh-sim.github.io/nodes/instruments/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Marek S. Lukasiewicz" /><link rel="canonical" href="https://marsh-sim.github.io/analysis/python/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Instruments - MARSH Documentation</title>
+    <title>Python - MARSH Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,9 +14,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Instruments";
-        var mkdocs_page_input_path = "nodes/instruments.md";
-        var mkdocs_page_url = "/nodes/instruments/";
+        var mkdocs_page_name = "Python";
+        var mkdocs_page_input_path = "analysis/python.md";
+        var mkdocs_page_url = "/analysis/python/";
       </script>
     
     <!--[if lt IE 9]>
@@ -53,39 +53,29 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Nodes</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../">Simulator nodes</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../nodes/">Simulator nodes</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../controls/">Controls</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../nodes/controls/">Controls</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Instruments</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#primary-flight-display">Primary Flight Display</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#controls-position">Controls position</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../nodes/instruments/">Instruments</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../visualisation/">Visualisation</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../nodes/visualisation/">Visualisation</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../eye-tracking/">Eye tracking</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../nodes/eye-tracking/">Eye tracking</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../body-pose/">Body pose</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../nodes/body-pose/">Body pose</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../nodes/development/">Development</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Data analysis</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../analysis/matlab/">MATLAB</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../matlab/">MATLAB</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../analysis/python/">Python</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Python</a>
+    <ul class="current">
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">MAVLink definitions</span></p>
@@ -120,10 +110,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Nodes</li>
-      <li class="breadcrumb-item active">Instruments</li>
+          <li class="breadcrumb-item">Data analysis</li>
+      <li class="breadcrumb-item active">Python</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/marsh-sim/marsh-sim.github.io/edit/main/docs/nodes/instruments.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/marsh-sim/marsh-sim.github.io/edit/main/docs/analysis/python.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -131,35 +121,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="instruments">Instruments</h1>
-<p>Python package <a href="https://pypi.org/project/lidia/"><code>lidia</code></a> can be used with MARSH starting with version 0.10 to provide instrument visualisation.
-The output is rendered in a web browser, so it can be accessed from other computers, or embedded in visualisation software</p>
-<h2 id="installation">Installation</h2>
-<p>The package can be installed using any of these commands:</p>
-<pre><code class="language-sh">uv tool install lidia
-pipx install lidia
-pip install lidia  # preferably inside a virtual environment (venv)
+                <h1 id="python-analysis">Python analysis</h1>
+<p>Requires <code>pymavlink</code> to be installed.
+If you need to parse messages recently introduced to MARSH that are not part of <code>pymavlink</code> yet, you will need to generate the code to read them.
+The script <a href="https://github.com/marsh-sim/sim-nodes/blob/main/update_mavlink.py"><code>update_mavlink.py</code></a> in <code>sim-nodes</code> repository can automatically download and generate the code for you.</p>
+<pre><code class="language-python">import mavlink_all as mavlink
+from pymavlink import mavutil
+
+log_file = &quot;./data/YYYYMMDDTHHMMSS_comment.tlog&quot;
+
+# We'll output the data as CSV in this example
+print(&quot;t,roll,pitch,yaw&quot;)
+
+parameters: dict[str, float] = {}
+mav = mavutil.mavlink_connection(log_file, dialect=&quot;all&quot;)
+start_time: float | None = None
+while message := mav.recv_msg():
+    # Convert to relative time from first message for simplicity
+    if start_time is None:
+        start_time = message._timestamp
+    t = message._timestamp - start_time + parsed_time
+
+    if message.get_type() == &quot;PARAM_VALUE&quot;:
+        # Save parameters that were in this run
+        parameters[message.param_id] = message.param_value
+    elif message.get_type() == &quot;SIM_STATE&quot;:
+        # After checking the message type we know it has fields that we want
+        print(f&quot;{t},{message.roll},{message.pitch},{message.yaw}&quot;)
 </code></pre>
-<h2 id="usage">Usage</h2>
-<p>The package has multiple sources of data to choose from, in this case start it like this:</p>
-<pre><code class="language-sh">lidia marsh
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For practical data analysis, the authors have also used and recommend <a href="https://numpy.org/">NumPy</a>, <a href="https://matplotlib.org/">Matplotlib</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://scipy.org/">SciPy</a> and <a href="https://marimo.io/">marimo</a> packages.
+Consult these links for more information on their usage.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you want to parse custom messages that are not part of <code>pymavlink</code> you need to run this workaround once after installation:</p>
+</div>
+<pre><code class="language-python"># Resolve problem with mavutil not using custom dialect
+import pymavlink.dialects.v20.all as _file_pymavlink_all  # pyright:ignore[reportMissingTypeStubs]
+import mavlink_all as _file_marsh_all
+import shutil
+
+# HACK: mavutil always loads the modules by name from pymavlink directory, have to replace
+_ = shutil.copy(_file_marsh_all.__file__, _file_pymavlink_all.__file__)
 </code></pre>
-<h3 id="primary-flight-display">Primary Flight Display</h3>
-<p>By default displayed at <a href="http://localhost:5555/pfd">localhost:5555/pfd</a>.
-Magenta markers indicate target value.</p>
-<p><img alt="screenshot of primary flight display drawn with lidia" src="../lidia_pfd.png" /></p>
-<h3 id="controls-position">Controls position</h3>
-<p>By default displayed at <a href="http://localhost:5555/controls">localhost:5555/controls</a>.
-Central square shows cyclic control, left bar collective position, and lower bar, pedal position.
-Red/yellow/green arrows and circle indicate current position, blue arrows and dashed lines trim.
-Magenta stars are desired positions with dotted lines for desirable and adequate margins.</p>
-<p><img alt="screenshot of inceptor positions drawn with lidia" src="../lidia_controls.png" /></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../controls/" class="btn btn-neutral float-left" title="Controls"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../visualisation/" class="btn btn-neutral float-right" title="Visualisation">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../matlab/" class="btn btn-neutral float-left" title="MATLAB"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../mavlink/minimal/" class="btn btn-neutral float-right" title="Minimal Set">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -187,10 +199,10 @@ Magenta stars are desired positions with dotted lines for desirable and adequate
         </span>
     
     
-      <span><a href="../controls/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../matlab/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../visualisation/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../mavlink/minimal/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
