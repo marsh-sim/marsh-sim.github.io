@@ -22,6 +22,7 @@ nav:
     - Development: nodes/development.md
   - Data analysis:
     - MATLAB: analysis/matlab.md
+    - Python: analysis/python.md
   - MAVLink definitions:
     - Minimal Set: mavlink/minimal.md
     - Subset of Common Set: mavlink/common.md
