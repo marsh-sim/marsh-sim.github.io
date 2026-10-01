@@ -171,6 +171,11 @@
 <h2 id="usage">Usage</h2>
 <p>The application will attempt to start in VR, but if it fails it will display the default pilot viewpoint looking forward.</p>
 <p><img alt="Screenshot of pilot's point of view" src="../visualisation_pov.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It seems that the class <code>MarshConnector</code> doesn't work correctly in debug builds of the editor.
+Either sends one message and stops, or isn't detected in the Manager at all</p>
+</div>
 <h3 id="controls">Controls</h3>
 <ul>
 <li>Use the mouse to look around when not using VR</li>
