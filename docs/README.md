@@ -10,3 +10,7 @@ It is a system for connecting loosely coupled programs into a research flight si
 ## Acknowledgements
 
 This software is developed in [Department of Aerospace Science and Technology](https://www.aero.polimi.it/) of Politecnico di Milano.
+
+## Other formats
+
+A complete introduction to the framework is also available in [presentation form](MARSH%20Training%202026-09-30.pdf). It was prepared for approximately 4 hours of classes, including software demonstrations.
