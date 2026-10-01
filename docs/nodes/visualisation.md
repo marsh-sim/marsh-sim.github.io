@@ -18,6 +18,10 @@ The application will attempt to start in VR, but if it fails it will display the
 
 ![Screenshot of pilot's point of view](./visualisation_pov.png)
 
+!!! warning
+    It seems that the class `MarshConnector` doesn't work correctly in debug builds of the editor.
+    Either sends one message and stops, or isn't detected in the Manager at all
+
 ### Controls
 
 - Use the mouse to look around when not using VR
