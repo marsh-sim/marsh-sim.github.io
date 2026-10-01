@@ -9,3 +9,7 @@ When ran as a command, nodes should accept the IP MARSH Manager with `-m` and `-
 
 Most nodes created so far have been collected in the [marsh-sim/sim-nodes repository](https://github.com/marsh-sim/sim-nodes).
 You are welcome to ask questions, report bugs and contribute new scripts there.
+
+## Roadmap
+
+- Recreate `sim-nodes/trivial_model.py` in MATLAB Simulink to serve as a template project

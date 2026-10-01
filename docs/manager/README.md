@@ -79,10 +79,7 @@ The maximum length for file comment is 50 characters.
 
 The data files saved are "MAVLink telemetry log", recognizable by `.tlog` extension.
 This binary file format is a de facto standard between multiple UAV flight stacks, the file just contains MAVLink messages, each preceded by a timestamp in microseconds.
-
-We have documentation for analysis in:
-
-- [MATLAB](../analysis/matlab.md).
+Consult pages in "Data analysis" section on the left for examples of reading these log files.
 
 There are also multiple external tools available for viewing the logs, notable examples:
 
