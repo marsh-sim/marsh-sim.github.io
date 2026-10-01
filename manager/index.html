@@ -198,11 +198,8 @@ The maximum length for file comment is 50 characters.</p>
 <p>You can use the file comment to help with your data processing afterwards: write test subject initials, short description of test case etc.</p>
 </div>
 <p>The data files saved are "MAVLink telemetry log", recognizable by <code>.tlog</code> extension.
-This binary file format is a de facto standard between multiple UAV flight stacks, the file just contains MAVLink messages, each preceded by a timestamp in microseconds.</p>
-<p>We have documentation for analysis in:</p>
-<ul>
-<li><a href="../analysis/matlab/">MATLAB</a>.</li>
-</ul>
+This binary file format is a de facto standard between multiple UAV flight stacks, the file just contains MAVLink messages, each preceded by a timestamp in microseconds.
+Consult pages in "Data analysis" section on the left for examples of reading these log files.</p>
 <p>There are also multiple external tools available for viewing the logs, notable examples:</p>
 <ul>
 <li><a href="https://github.com/ArduPilot/pymavlink">pymavlink library</a> which is used for generating libraries and communication for Python also has <a href="https://github.com/ArduPilot/pymavlink/blob/master/tools/mavlogdump.py"><code>mavlogdump.py</code> script</a></li>
