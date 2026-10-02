@@ -87,6 +87,31 @@ There are also multiple external tools available for viewing the logs, notable e
 - Some online tools like [UAV Log Viewer](https://plot.ardupilot.org/) can read `.tlog` files.
 - ArduPilot's [MAVExplorer](https://ardupilot.org/dev/docs/using-mavexplorer-for-log-analysis.html) can be used for plots, filtering data and showing it on a map
 
+### Replaying data
+
+Saved `.tlog` files can be replayed through the manager, so that the visualisation can be shown again without running the rest of the simulator.
+This feature is available since version 0.3.0.
+
+1. Click "Select replay file" and choose a `.tlog` file, the dialog opens in the `marsh-logs` folder in your home directory by default.
+    The file name is displayed together with its duration.
+2. Start only the [visualisation](../nodes/visualisation.md) node(s) that should display the replay.
+3. Click "Start replay" once the message "Ready to start replay" is shown.
+
+The recorded messages are broadcast to the connected nodes with the original timing between them.
+
+The replay can only be started when all the conditions below are met, otherwise a warning is displayed in place of the ready message:
+
+- A replay file is selected.
+- Data is not being saved, stop the recording first. Likewise, saving data cannot be started during a replay.
+- At least one node of type VISUALIZATION is connected, and no nodes of other types are (they would receive the replayed messages mixed with their own data).
+
+During the replay the following controls are available:
+
+- "Pause" and "Resume" to temporarily stop the replay.
+- "Stop replay" to end it early, a dialog is shown when the replay reaches the end of the file.
+- Speed spin box, accepting any value from 0.1x to 10.0x in steps of 0.01x. It can be changed before the start of the replay, or while it is paused.
+- The progress bar shows the current and total time, clicking on it jumps to that position in the file.
+
 ## Roadmap
 
 The following are already planned future features of MARSH Manager, approximately in the order of priority / expected implementation date:
@@ -111,7 +136,6 @@ The following are already planned future features of MARSH Manager, approximatel
     - Setting parameters of multiple components based on test matrix
     - Parameter descriptions with [Component Metadata Protocol](https://mavlink.io/en/services/component_information.html)
 - Console showing [STATUSTEXT](../mavlink/common.md#STATUSTEXT) messages
-- Replaying log files
 - Resolving duplicate component ids
 
 ## Contributing
